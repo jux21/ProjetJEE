@@ -6,6 +6,7 @@
 package clients.modeles;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,104 @@ public class Client implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int id,
+                numeroLit;
+    private String nom,
+                   prenom,
+                   heureArrivee,
+                   chambre;
+
+    public Client() {
+    }
+
+    public Client(int id, int numeroLit, String nom, String prenom, String heureArrivee, String chambre, Date jourArrivee, Date jourDepart, boolean aPaye, boolean aRenduLesClef) {
+        this.id = id;
+        this.numeroLit = numeroLit;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.heureArrivee = heureArrivee;
+        this.chambre = chambre;
+        this.jourArrivee = jourArrivee;
+        this.jourDepart = jourDepart;
+        this.aPaye = aPaye;
+        this.aRenduLesClef = aRenduLesClef;
+    }
+
+    public int getNumeroLit() {
+        return numeroLit;
+    }
+
+    public void setNumeroLit(int numeroLit) {
+        this.numeroLit = numeroLit;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getHeureArrivee() {
+        return heureArrivee;
+    }
+
+    public void setHeureArrivee(String heureArrivee) {
+        this.heureArrivee = heureArrivee;
+    }
+
+    public String getChambre() {
+        return chambre;
+    }
+
+    public void setChambre(String chambre) {
+        this.chambre = chambre;
+    }
+
+    public Date getJourArrivee() {
+        return jourArrivee;
+    }
+
+    public void setJourArrivee(Date jourArrivee) {
+        this.jourArrivee = jourArrivee;
+    }
+
+    public Date getJourDepart() {
+        return jourDepart;
+    }
+
+    public void setJourDepart(Date jourDepart) {
+        this.jourDepart = jourDepart;
+    }
+
+    public boolean isaPaye() {
+        return aPaye;
+    }
+
+    public void setaPaye(boolean aPaye) {
+        this.aPaye = aPaye;
+    }
+
+    public boolean isaRenduLesClef() {
+        return aRenduLesClef;
+    }
+
+    public void setaRenduLesClef(boolean aRenduLesClef) {
+        this.aRenduLesClef = aRenduLesClef;
+    }
+    private Date jourArrivee,
+                 jourDepart;
+    private boolean aPaye,
+                    aRenduLesClef;
 
     public int getId() {
         return id;
