@@ -21,24 +21,23 @@ public class Client implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id,
-                numeroLit;
+    private int id;
     private String nom,
                    prenom,
                    heureArrivee,
                    chambre;
+    private int numeroLit;
 
     public Client() {
     }
 
-    public Client(int id, int numeroLit, String nom, String prenom, String heureArrivee, String chambre, Date jourArrivee, Date jourDepart, boolean aPaye, boolean aRenduLesClef) {
-        this.id = id;
-        this.numeroLit = numeroLit;
+    public Client(String nom, String prenom, String heureArrivee, Date jourArrivee, String chambre, int numeroLit, Date jourDepart, boolean aPaye, boolean aRenduLesClef) {
         this.nom = nom;
         this.prenom = prenom;
         this.heureArrivee = heureArrivee;
-        this.chambre = chambre;
         this.jourArrivee = jourArrivee;
+        this.chambre = chambre;
+        this.numeroLit = numeroLit;
         this.jourDepart = jourDepart;
         this.aPaye = aPaye;
         this.aRenduLesClef = aRenduLesClef;
