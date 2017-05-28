@@ -30,8 +30,7 @@ public class GestionnaireClients {
         return c;  
     }
     
-    public Collection<Client> getClientsInHouse() {  
-        // Exécution d'une requête équivalente à un select *  
+    public Collection<Client> getClientsCurrentlyInHouse() {    
         Query q = em.createQuery("");  
         return q.getResultList();  
     }
