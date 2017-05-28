@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -22,16 +23,27 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    
     private String nom,
                    prenom,
-                   heureArrivee,
                    chambre;
+    
     private int numeroLit;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date jourArrivee,
+                 jourDepart;
+    
+    @Temporal(javax.persistence.TemporalType.TIME)
+    private Date heureArrivee;
+    
+    private boolean aPaye,
+                    aRenduLesClef;
 
     public Client() {
     }
 
-    public Client(String nom, String prenom, String heureArrivee, Date jourArrivee, String chambre, int numeroLit, Date jourDepart, boolean aPaye, boolean aRenduLesClef) {
+    public Client(String nom, String prenom, Date heureArrivee, Date jourArrivee, String chambre, int numeroLit, Date jourDepart, boolean aPaye, boolean aRenduLesClef) {
         this.nom = nom;
         this.prenom = prenom;
         this.heureArrivee = heureArrivee;
@@ -67,11 +79,11 @@ public class Client implements Serializable {
         this.prenom = prenom;
     }
 
-    public String getHeureArrivee() {
+    public Date getHeureArrivee() {
         return heureArrivee;
     }
 
-    public void setHeureArrivee(String heureArrivee) {
+    public void setHeureArrivee(Date heureArrivee) {
         this.heureArrivee = heureArrivee;
     }
 
@@ -114,11 +126,7 @@ public class Client implements Serializable {
     public void setaRenduLesClef(boolean aRenduLesClef) {
         this.aRenduLesClef = aRenduLesClef;
     }
-    private Date jourArrivee,
-                 jourDepart;
-    private boolean aPaye,
-                    aRenduLesClef;
-
+    
     public int getId() {
         return id;
     }

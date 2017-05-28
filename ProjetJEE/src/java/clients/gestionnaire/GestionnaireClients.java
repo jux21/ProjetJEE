@@ -24,7 +24,7 @@ public class GestionnaireClients {
     private EntityManager em;
     
     
-    public Client creeUtilisateur(String nom, String prenom, String heureArrivee, Date jourArrivee, String chambre, int numeroLit, Date jourDepart, boolean aPaye, boolean aRenduLesClef) {  
+    public Client creeUtilisateur(String nom, String prenom, Date heureArrivee, Date jourArrivee, String chambre, int numeroLit, Date jourDepart, boolean aPaye, boolean aRenduLesClef) {  
         Client c = new Client(nom, prenom, heureArrivee, jourArrivee, chambre, numeroLit, jourDepart, aPaye, aRenduLesClef); 
         em.persist(c);  
         return c;  
