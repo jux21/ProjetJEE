@@ -5,12 +5,16 @@
  */
 package clients.modeles;
 
+import chambres.modeles.Chambre;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -25,10 +29,10 @@ public class Client implements Serializable {
     private int id;
     
     private String nom,
-                   prenom,
-                   chambre;
+                   prenom;
     
-    private int numeroLit;
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private List<Chambre> chambres;
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date jourArrivee,
@@ -38,30 +42,21 @@ public class Client implements Serializable {
     private Date heureArrivee;
     
     private boolean aPaye,
-                    aRenduLesClef;
+                    estArrive;
 
     public Client() {
     }
 
-    public Client(String nom, String prenom, Date heureArrivee, Date jourArrivee, String chambre, int numeroLit, Date jourDepart, boolean aPaye, boolean aRenduLesClef) {
+    public Client(String nom, String prenom, Date heureArrivee, Date jourArrivee, Date jourDepart, boolean aPaye, boolean estArrive) {
         this.nom = nom;
         this.prenom = prenom;
         this.heureArrivee = heureArrivee;
         this.jourArrivee = jourArrivee;
-        this.chambre = chambre;
-        this.numeroLit = numeroLit;
         this.jourDepart = jourDepart;
         this.aPaye = aPaye;
-        this.aRenduLesClef = aRenduLesClef;
+        this.estArrive = estArrive;
     }
 
-    public int getNumeroLit() {
-        return numeroLit;
-    }
-
-    public void setNumeroLit(int numeroLit) {
-        this.numeroLit = numeroLit;
-    }
 
     public String getNom() {
         return nom;
@@ -85,14 +80,6 @@ public class Client implements Serializable {
 
     public void setHeureArrivee(Date heureArrivee) {
         this.heureArrivee = heureArrivee;
-    }
-
-    public String getChambre() {
-        return chambre;
-    }
-
-    public void setChambre(String chambre) {
-        this.chambre = chambre;
     }
 
     public Date getJourArrivee() {
@@ -119,12 +106,20 @@ public class Client implements Serializable {
         this.aPaye = aPaye;
     }
 
-    public boolean isaRenduLesClef() {
-        return aRenduLesClef;
+    public boolean isEstArrive() {
+        return estArrive;
     }
 
-    public void setaRenduLesClef(boolean aRenduLesClef) {
-        this.aRenduLesClef = aRenduLesClef;
+    public void setEstArrive(boolean estArrive) {
+        this.estArrive = estArrive;
+    }
+    
+    public List<Chambre> getChambres() {
+        return chambres;
+    }
+
+    public void setChambres(List<Chambre> chambres) {
+        this.chambres = chambres;
     }
     
     public int getId() {

@@ -5,7 +5,9 @@
  */
 package clients.gestionnaire;
 
+import chambres.modeles.Chambre;
 import clients.modeles.Client;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import javax.ejb.Stateless;
@@ -24,9 +26,13 @@ public class GestionnaireClients {
     private EntityManager em;
     
     
-    public Client creeUtilisateur(String nom, String prenom, Date heureArrivee, Date jourArrivee, String chambre, int numeroLit, Date jourDepart, boolean aPaye, boolean aRenduLesClef) {  
-        Client c = new Client(nom, prenom, heureArrivee, jourArrivee, chambre, numeroLit, jourDepart, aPaye, aRenduLesClef); 
-        em.persist(c);  
+    public Client creeUtilisateur(String nom, String prenom, Date heureArrivee, Date jourArrivee, String chambre, Date jourDepart, boolean aPaye, boolean estArrive) {  
+        Client c = new Client(nom, prenom, heureArrivee, jourArrivee, jourDepart, aPaye, estArrive); 
+        ArrayList<Chambre> chambres = new ArrayList<Chambre>();
+        chambres.add(new Chambre(chambre));
+        c.setChambres(chambres);
+        
+        em.persist(c);
         return c;  
     }
     
