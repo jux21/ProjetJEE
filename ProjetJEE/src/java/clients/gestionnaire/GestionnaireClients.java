@@ -26,7 +26,7 @@ public class GestionnaireClients {
     private EntityManager em;
     
     
-    public Client creeUtilisateur(String nom, String prenom, Date heureArrivee, Date jourArrivee, String chambre, Date jourDepart, boolean aPaye, boolean estArrive) {  
+    public Client creeClient(String nom, String prenom, Date heureArrivee, Date jourArrivee, String chambre, Date jourDepart, boolean aPaye, boolean estArrive) {  
         Client c = new Client(nom, prenom, heureArrivee, jourArrivee, jourDepart, aPaye, estArrive); 
         ArrayList<Chambre> chambres = new ArrayList<Chambre>();
         chambres.add(new Chambre(chambre));
