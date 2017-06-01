@@ -7,6 +7,7 @@ package clients.gestionnaire;
 
 import chambres.modeles.Chambre;
 import clients.modeles.Client;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -26,7 +27,7 @@ public class GestionnaireClients {
     private EntityManager em;
     
     
-    public Client creeClient(String nom, String prenom, Date heureArrivee, Date jourArrivee, String chambre, Date jourDepart, boolean aPaye, boolean estArrive) {  
+    public Client creeClient(String nom, String prenom, String heureArrivee, LocalDate jourArrivee, String chambre, LocalDate jourDepart, boolean aPaye, boolean estArrive) {  
         Client c = new Client(nom, prenom, heureArrivee, jourArrivee, jourDepart, aPaye, estArrive); 
         ArrayList<Chambre> chambres = new ArrayList<Chambre>();
         chambres.add(new Chambre(chambre));

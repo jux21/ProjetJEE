@@ -9,7 +9,14 @@ import clients.gestionnaire.GestionnaireClients;
 import clients.modeles.Client;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
+import java.util.Date;
+import java.util.Locale;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -60,12 +67,32 @@ public class ServletClients extends HttpServlet {
                 forwardTo = "index.jsp?action=listerLesClients"; 
                 message = "Liste des utilisateurs"; 
 
-            } else if (action.equals("insererClient")) {                
-                /*gestionnaireClients.creeClient();  
-                Collection<Client> liste = gestionnaireClients.getClientsCurrentlyInHouse();  
+            } else if (action.equals("insererClient")) { 
+                
+                //http://localhost:8080/ProjetJEE/ServletClients?action=insererClient&nom=Hubert&prenom=Julien&heureArrivee=15:24&jourArrivee=31/05/2017&jourDepart=04/06/2017&aPaye=true&estArrive=true&chambre=Chambre 2
+                
+                // Transformation des String en Date
+                String stringJourArrivee = request.getParameter("jourArrivee");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.FRANCE);
+                LocalDate dateJourArrivee = LocalDate.parse(stringJourArrivee, formatter);
+                
+                String stringJourDepart = request.getParameter("jourDepart");
+                LocalDate dateJourDepart = LocalDate.parse(stringJourDepart, formatter);
+                
+                System.out.println("jourArrivee : "+dateJourArrivee);
+                System.out.println("jourDepart : "+dateJourDepart);
+                
+                // Transformation des String en Boolean
+                Boolean aPaye = Boolean.valueOf(request.getParameter("aPaye"));
+                Boolean estArrive = Boolean.valueOf(request.getParameter("estArrive"));
+                
+                gestionnaireClients.creeClient(request.getParameter("nom"), request.getParameter("prenom"), request.getParameter("heureArrivee"), dateJourArrivee, request.getParameter("chambre"), dateJourDepart, aPaye, estArrive);
+                //creeClient(String nom, String prenom, Date heureArrivee, Date jourArrivee, String chambre, Date jourDepart, boolean aPaye, boolean estArrive)
+                
+                /*Collection<Client> liste = gestionnaireClients.getClientsCurrentlyInHouse();  
                 request.setAttribute("listeDesClients", liste); 
                 forwardTo = "index.jsp?action=listerLesClients";  
-                message = "Insertion d'un client"; */ 
+                message = "Insertion d'un client";*/
                 
             } else if (action.equals("modifierClient")) {
                 /*gestionnaireClients.updateClient(); 
@@ -86,7 +113,7 @@ public class ServletClients extends HttpServlet {
             }   
         }
         
-        if (login != null) {
+        /*if (login != null) {
             request.setAttribute("userlogin", login);
         }
 
@@ -94,7 +121,7 @@ public class ServletClients extends HttpServlet {
             System.out.println("Not connected");
         } else {
             System.out.println("Connected "+(String) session.getAttribute("LOGIN"));
-        } 
+        } */
   
         RequestDispatcher dp = request.getRequestDispatcher(forwardTo + "&message=" + message);  
         dp.forward(request, response);  

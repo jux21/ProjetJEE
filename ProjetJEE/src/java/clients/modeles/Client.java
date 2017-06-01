@@ -7,6 +7,7 @@ package clients.modeles;
 
 import chambres.modeles.Chambre;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -29,17 +30,18 @@ public class Client implements Serializable {
     private int id;
     
     private String nom,
-                   prenom;
+                   prenom,
+                   heureArrivee;
     
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Chambre> chambres;
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date jourArrivee,
-                 jourDepart;
+                      jourDepart;
     
-    @Temporal(javax.persistence.TemporalType.TIME)
-    private Date heureArrivee;
+    /*@Temporal(javax.persistence.TemporalType.TIME)
+    private Date heureArrivee;*/
     
     private boolean aPaye,
                     estArrive;
@@ -47,12 +49,12 @@ public class Client implements Serializable {
     public Client() {
     }
 
-    public Client(String nom, String prenom, Date heureArrivee, Date jourArrivee, Date jourDepart, boolean aPaye, boolean estArrive) {
+    public Client(String nom, String prenom, String heureArrivee, LocalDate jourArrivee, LocalDate jourDepart, boolean aPaye, boolean estArrive) {
         this.nom = nom;
         this.prenom = prenom;
         this.heureArrivee = heureArrivee;
-        this.jourArrivee = jourArrivee;
-        this.jourDepart = jourDepart;
+        this.jourArrivee = java.sql.Date.valueOf(jourArrivee);
+        this.jourDepart = java.sql.Date.valueOf(jourDepart);
         this.aPaye = aPaye;
         this.estArrive = estArrive;
     }
@@ -74,11 +76,11 @@ public class Client implements Serializable {
         this.prenom = prenom;
     }
 
-    public Date getHeureArrivee() {
+    public String getHeureArrivee() {
         return heureArrivee;
     }
 
-    public void setHeureArrivee(Date heureArrivee) {
+    public void setHeureArrivee(String heureArrivee) {
         this.heureArrivee = heureArrivee;
     }
 
