@@ -1,0 +1,439 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24 avr. 2017, 21:55:23
+    Author     : Utilisateur
+*/
+
+.button-collapse {
+        position: absolute;
+    left: 40px;
+    top: 0;
+    z-index: 10;
+}
+
+.agenda .row .btn * {
+        font-size: 1.64rem;
+    line-height: 110%;
+    margin: .82rem 0 .656rem 0;
+        color: rgba(0,0,0,0.87);
+            letter-spacing: 0px;
+            margin:0;
+                text-transform: none;
+                text-align: left;
+}
+
+.agenda .row .btn p {
+
+    font-size: 14.5px;
+}
+.agenda .row .btn {
+    height:auto;
+    width:auto;
+        display: list-item;
+    background: none;
+    box-shadow: none;
+    padding:5px;
+}
+
+.agenda .row .btn:hover {
+box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.agenda .row .col {
+        margin: 0;
+    padding: 0;
+    border-left: .5px rgba(0,0,0,0.15) solid;
+}
+
+.agenda h6 {
+    padding: .5px;
+    position:relative;
+        font-size: 1.5rem;
+}
+
+.agenda .moi {
+    font-size: 1rem;
+    float: right;
+    margin-top: 15px;
+    background: rgba(0,0,0,0.1);
+    width: 100%;
+    text-align: right;
+    padding-right: 5px;
+
+}
+
+.agenda .row {
+    margin-bottom: 0px;
+}
+
+.agenda .row.jours {
+    margin-bottom: 1.5px;}
+
+.agenda .row.jours .col {
+    border-left:none;
+}
+
+.agenda .nJour {
+        font-size: 3rem;
+    text-align: right;
+    position: absolute;
+    right: 0px;
+}
+
+@media only screen and (min-width: 992px) {
+    
+    main header {
+     width: 100%;
+    top: 0%;
+    left: 0%;
+    position: absolute;
+    
+}
+    
+}
+
+@media only screen and (max-width: 992px) {
+    main {
+    margin-top: 60px;
+}
+    
+    
+    section {
+     padding:20px;
+    
+}
+}
+.nav-wrapper input[type=text].datepicker.picker__input {
+width: 100px;
+    display: inline-block;
+    float: right;
+    z-index: 1;
+    position: relative;
+    border-bottom: none;
+}
+
+.row .section {
+    height:175px;
+}
+
+.submitnewresa {
+    margin-top:75px;
+}
+
+.apayer {
+    margin-top:50px;
+}
+.nav-wrapper i {
+    float: right;
+    z-index: 0;
+    right: 20px;
+    position: absolute;
+    }
+    
+    .nav-wrapper {
+
+    position: relative;
+    }
+
+.nav-extended {
+    position: fixed;
+    top: 0px;
+    height: 64px;
+}
+
+.menulink {
+    line-height: 20px;
+    padding-top: 5px;
+    display: block;
+}
+
+h2 {
+        font-size: 1.56rem;
+}
+
+main {
+    margin-top: 95px;
+}
+
+#slide-out .label, #slide-out h5 {
+    padding: 0 32px;
+}
+nav.nav-extended .nav-wrapper {
+    min-height: 64px;
+    height: 64px;
+}
+
+.side-nav.fixed {
+    top:64px;
+}
+
+.side-nav .userView .background {
+    background: #595bd0; 
+}
+
+.side-nav .userView .circle {
+    background: #2c2e80;
+}
+main, footer {
+      padding-left: 320px;
+}
+
+.collapsible-body input[type=submit] {
+        padding-top: 23px;
+}
+
+.nav-wrapper input[type=submit] {
+    padding-top: 9px;
+}
+
+.nav-wrapper input[type=text] {
+    border-bottom: 1px solid #fff;
+}
+
+.collapsible-body a {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.side-nav li:last-child {
+    margin-bottom: 130px;
+}
+header nav.nav-extended {
+    height: 64px;
+} 
+
+.collapsible-body form {
+    padding : 0 40px;
+}
+
+.collapsible-body input {
+        margin-top: -15px;
+}
+
+.collapsible-body .btn-floating.green.center
+{
+   display: block;
+   margin: auto; 
+}
+
+    @media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 0;
+      }
+    }
+    
+    
+    
+    
+    
+
+
+label {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  color: #fff;
+}
+label input {
+  margin-left: 0.625rem;
+  padding: 0.4375rem 0.3125rem;
+}
+
+p {
+  margin-bottom: 0.9375rem;
+}
+
+.wrapper {
+  display: block;
+  margin: 0.625rem 0.3125rem;
+}
+.wrapper.text {
+  max-width: 25rem;
+  border: solid 1px #e3e3e3;
+  padding: 0.9375rem;
+  margin-bottom: 0.9375rem;
+}
+
+input.hasDatepicker {
+  cursor: pointer;
+}
+
+.ui-datepicker {
+  border-width: 0;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  width: 18.5rem;
+}
+@media (max-width: 480px) {
+  .ui-datepicker {
+    width: 17rem;
+  }
+}
+.ui-datepicker.ui-corner-all {
+  border-radius: 0;
+}
+.ui-datepicker .ui-datepicker-header {
+  background: #DD5044;
+  padding: 15px 0;
+  border-width: 0;
+}
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+  cursor: pointer;
+  top: 15px;
+}
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+  background: transparent;
+  width: 0px;
+  height: 0px;
+  border-width: 5px 9px;
+  border-style: solid;
+  border-color: transparent;
+  margin-top: 0;
+  top: 32%;
+}
+.ui-datepicker .ui-datepicker-prev span {
+  left: 59%;
+  border-right-color: #fff;
+  border-left-width: 0;
+}
+.ui-datepicker .ui-datepicker-next span {
+  left: 67%;
+  border-left-color: #fff;
+  border-right-width: 0;
+}
+.ui-datepicker .ui-datepicker-title {
+  text-shadow: none;
+}
+.ui-datepicker .ui-datepicker-title select {
+  border: 0;
+  height: 27px;
+  width: 45%;
+  width: calc(49% - 5px);
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #414141;
+  padding-left: 5px;
+}
+.ui-datepicker .ui-datepicker-title select:focus {
+  outline: none;
+}
+.ui-datepicker .ui-datepicker-title .ui-datepicker-month {
+  margin-right: 5px;
+}
+.ui-datepicker .ui-datepicker-title .ui-datepicker-year {
+  margin-left: 5px;
+}
+.ui-datepicker .ui-datepicker-buttonpane button {
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  background: #fff;
+  border: 0px;
+  font-weight: 600;
+  margin: 10px 5px;
+  padding: 5px 12px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.ui-datepicker .ui-datepicker-buttonpane button[data-handler="today"]:hover, .ui-datepicker .ui-datepicker-buttonpane button[data-handler="today"]:active {
+  opacity: 1;
+  color: #4f4f4f;
+}
+.ui-datepicker .ui-datepicker-buttonpane button[data-handler="hide"]:hover, .ui-datepicker .ui-datepicker-buttonpane button[data-handler="hide"]:active {
+  color: #DD5044;
+}
+.ui-datepicker table {
+  margin-top: 0.625rem;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+.ui-datepicker th {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.ui-datepicker th.ui-datepicker-week-end * {
+  color: #DD5044;
+}
+.ui-datepicker td span,
+.ui-datepicker td a {
+  padding: .4em .2em;
+  font-size: 14px;
+  text-align: center;
+}
+.ui-datepicker td .ui-state-default.ui-state-hover {
+  border-color: transparent;
+  text-shadow: none;
+  background: #ededed;
+  font-weight: normal;
+  color: inherit;
+}
+.ui-datepicker td .ui-state-highlight {
+  border-color: transparent;
+}
+.ui-datepicker td .ui-state-active,
+.ui-datepicker td .ui-state-active.ui-state-highlight,
+.ui-datepicker td .ui-state-active.ui-state-hover {
+  text-shadow: none;
+  font-weight: 400;
+  background: #DD5044;
+  border-color: #DD5044;
+  color: #fff;
+}
+.ui-datepicker td.ui-datepicker-week-end * {
+  color: #949494;
+}
+.ui-datepicker td.ui-datepicker-week-end .ui-state-active {
+  color: #fff;
+}
+.ui-datepicker .ui-datepicker-today {
+  border: solid 1px #dbdbdb;
+}
+.ui-datepicker .ui-widget-content {
+  border-color: #e3e3e3;
+}
+.ui-datepicker .ui-widget-content [type='button'] {
+  font-size: 14px;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+
+.ui-datepicker-trigger {
+  margin: 10px;
+}
+
+.datepicker.sample {
+  margin-left: 50px;
+}
+
+#ui-datepicker-div {
+    background: #fff;
+}
+
+.ui-datepicker-title select {
+    display: inline-block;
+}
+
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+    border : none;
+    position: absolute;
+    top: 14px;
+    color:#fff;
+    width: 50px;
+    height:50px;
+    display:block;
+}
+
+.ui-datepicker .ui-datepicker-prev span {
+    left: 16px;
+}
+
+.ui-datepicker .ui-datepicker-next span {
+     right: 0;
+         left: inherit;
+}
+
+.ui-datepicker .ui-datepicker-header {
+    padding-top: 55px;
+}
