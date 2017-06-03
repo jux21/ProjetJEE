@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,9 +30,13 @@ public class GestionnaireClients {
     
     public Client creeClient(String nom, String prenom, String heureArrivee, LocalDate jourArrivee, String chambre, LocalDate jourDepart, boolean aPaye, boolean estArrive) {  
         Client c = new Client(nom, prenom, heureArrivee, jourArrivee, jourDepart, aPaye, estArrive); 
-        ArrayList<Chambre> chambres = new ArrayList<Chambre>();
-        chambres.add(new Chambre(chambre));
-        c.setChambres(chambres);
+        Collection<Chambre> chambres;
+        
+        Query q = em.createQuery("SELECT u FROM CHAMBRE u WHERE u.chambre ='"+chambre+"'");  
+        q.getResultList(); 
+        
+        //chambres.add((Chambre) );
+        c.setChambres((List<Chambre>) q.getResultList().get(0));
         
         em.persist(c);
         return c;  

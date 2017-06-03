@@ -130,11 +130,11 @@ public class ServletUsers extends HttpServlet {
             request.setAttribute("userlogin", login);
         }
 
-        if (session.isNew()) {
+        /*if (session.isNew()) {
             System.out.println("Not connected");
         } else {
             System.out.println("Connected "+(String) session.getAttribute("LOGIN"));
-        } 
+        } */
   
         RequestDispatcher dp = request.getRequestDispatcher(forwardTo + "&message=" + message);  
         dp.forward(request, response);  

@@ -38,7 +38,7 @@ public class Client implements Serializable {
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date jourArrivee,
-                      jourDepart;
+                 jourDepart;
     
     /*@Temporal(javax.persistence.TemporalType.TIME)
     private Date heureArrivee;*/

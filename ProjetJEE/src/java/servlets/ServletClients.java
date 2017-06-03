@@ -50,11 +50,14 @@ public class ServletClients extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)  
             throws ServletException, IOException {  
         // Pratique pour décider de l'action à faire  
+        System.out.println("cacacaca");
         String action = request.getParameter("action");  
         String forwardTo = "";  
         String message = "";
         
         if (action != null) { 
+            System.out.println("llaaaaaaaaaaaaaaaaaaaaaaa");
+            
             if (action.equals("connexion"))  {
                 forwardTo = "index.jsp?action=";
                 message = "Connecté"; 
@@ -69,7 +72,9 @@ public class ServletClients extends HttpServlet {
 
             } else if (action.equals("insererClient")) { 
                 
-                //http://localhost:8080/ProjetJEE/ServletClients?action=insererClient&nom=Hubert&prenom=Julien&heureArrivee=15:24&jourArrivee=31/05/2017&jourDepart=04/06/2017&aPaye=true&estArrive=true&chambre=Chambre 2
+                //http://localhost:8080/index.jsp/ProjetJEE/ServletClients&action=insererClient&nom=Hubert&prenom=Julien&heureArrivee=15:24&jourArrivee=31/05/2017&jourDepart=04/06/2017&aPaye=true&estArrive=true&chambre=simple
+                //http://localhost:8080/index.jsp/ProjetJEE/ServletClients?nom=Hubert?prenom=Julien?heureArrivee=15:24?jourArrivee=31/05/2017?jourDepart=04/06/2017?aPaye=true?estArrive=true?chambre=simple&action=insererClient
+                
                 
                 // Transformation des String en Date
                 String stringJourArrivee = request.getParameter("jourArrivee");
