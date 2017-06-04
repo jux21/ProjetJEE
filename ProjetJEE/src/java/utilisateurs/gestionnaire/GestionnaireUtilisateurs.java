@@ -36,9 +36,6 @@ public class GestionnaireUtilisateurs {
     public Utilisateur creeUtilisateur(String login, String password) { 
         Utilisateur u;
         u = new Utilisateur(login, password);
-        
-   
-        
         em.persist(u);  
         return u;  
     }  

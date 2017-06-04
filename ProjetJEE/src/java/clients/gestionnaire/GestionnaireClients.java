@@ -16,6 +16,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import utilisateurs.modeles.Utilisateur;
 
 /**
  *
@@ -32,11 +33,12 @@ public class GestionnaireClients {
         Client c = new Client(nom, prenom, heureArrivee, jourArrivee, jourDepart, aPaye, estArrive); 
         Collection<Chambre> chambres;
         
-        Query q = em.createQuery("SELECT u FROM CHAMBRE u WHERE u.chambre ='"+chambre+"'");  
-        q.getResultList(); 
+        Query q = em.createQuery("SELECT c FROM Chambre c WHERE c.chambre ='"+chambre+"'"); 
+        //"SELECT u FROM Utilisateur u WHERE u.login ='"+login+"'");
+        //q.getResultList();
         
         //chambres.add((Chambre) );
-        c.setChambres((List<Chambre>) q.getResultList().get(0));
+        //c.setChambres((List<Chambre>) (Chambre) q.getResultList().get(0));
         
         em.persist(c);
         return c;  
@@ -45,5 +47,26 @@ public class GestionnaireClients {
     public Collection<Client> getClientsCurrentlyInHouse() {    
         Query q = em.createQuery("");  
         return q.getResultList();  
+    }
+    
+    public void fuckyou() 
+    {
+        System.out.println("inserrrreeeeeeer client");
+                
+                Chambre c = new Chambre("simple");
+                em.persist(c);
+                c = new Chambre("zen");
+                em.persist(c);
+                c = new Chambre("swazi");
+                em.persist(c);
+                c = new Chambre("dor3");
+                em.persist(c);
+                c = new Chambre("dor4");
+                em.persist(c);
+                
+                Utilisateur u = new Utilisateur("jux","jux");
+                em.persist(u);
+                u = new Utilisateur("cecile","cecile");
+                em.persist(u);
     }
 }

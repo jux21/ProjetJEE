@@ -47,7 +47,12 @@ public class ServletUsers extends HttpServlet {
         String forwardTo = "";  
         String message = "";
         
+        
+        
         if (action != null) { 
+            
+            System.out.println("ServletUseeeeeeeeeerrr");
+            
             if (action.equals("connexion"))  {
                 forwardTo = "index.jsp?action=";
                 message = "Connecté"; 
