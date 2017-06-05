@@ -7,6 +7,7 @@ package clients.gestionnaire;
 
 import chambres.modeles.Chambre;
 import clients.modeles.Client;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,8 +45,10 @@ public class GestionnaireClients {
         return c;  
     }
     
-    public Collection<Client> getClientsCurrentlyInHouse() {    
-        Query q = em.createQuery("");  
+    public Collection<Client> getClientsCurrentlyInHouse() {  
+        // Si le jour courant se situe entre le jour d'arrivée et le jour de départ
+        Query q = em.createQuery("SELECT c FROM Client c WHERE CURRENT_DATE BETWEEN c.jourArrivee AND c.jourDepart");  
+        System.out.println(q.getResultList());
         return q.getResultList();  
     }
     

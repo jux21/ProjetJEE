@@ -148,8 +148,6 @@ public class ServletClients extends HttpServlet {
         
         if (action != null) { 
             
-            System.out.println("ServletCliiiiiiients");
- 
             if (action.equals("connexion"))  {
                 forwardTo = "index.jsp?action=";
                 message = "Connecté"; 
@@ -157,10 +155,11 @@ public class ServletClients extends HttpServlet {
                 login = (String) session.getAttribute("LOGIN");  
              }
             else if (action.equals("listerClients")) {
+                // On récupère la liste des clients actuellement présent dans la maison d'hote
                 Collection<Client> liste = gestionnaireClients.getClientsCurrentlyInHouse();  
-                request.setAttribute("listeDesClients", liste);  
-                forwardTo = "index.jsp?action=listerLesClients"; 
-                message = "Liste des utilisateurs"; 
+                //request.setAttribute("listeDesClients", liste);  
+                forwardTo = "ServletUsers?action=connexion"; 
+                message = "Liste des clients";
 
             } else if (action.equals("insererClient")) { 
                 

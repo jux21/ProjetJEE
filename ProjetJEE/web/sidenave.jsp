@@ -22,7 +22,7 @@
                     <ul id="nav-mobile" class="right ">
                    <li> <label for="" class="wrapper">
                         <form id="form_crea_u" action="ServletAgenda" method="get">
-                            <li class="hide-on-small-only">Sélectionner date</li>
+                            <li class="hide-on-small-only">Sélectionnez date</li>
                             <li><a class="waves-effect waves-light btn datepick"><input type="text" class="datepickerr" name="datepicker"></a></li>
                             <input class="form_crea_u_action" type="hidden" name="action" value="datepicker"/> 
                             <li> <a class="waves-effect waves-light btn"><input type="submit" value="Afficher" name="submit"></a></li>

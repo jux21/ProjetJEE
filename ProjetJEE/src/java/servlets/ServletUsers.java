@@ -35,6 +35,8 @@ public class ServletUsers extends HttpServlet {
     
     HttpSession session;
     String login;
+    
+    boolean firstAccess = true;
 
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods. 
@@ -54,7 +56,6 @@ public class ServletUsers extends HttpServlet {
         
         if (action != null) { 
             
-            System.out.println("ServletUseeeeeeeeeerrr");
             
             if (action.equals("connexion"))  {
                 forwardTo = "index.jsp?action=connexion";
@@ -142,10 +143,20 @@ public class ServletUsers extends HttpServlet {
                 request.setAttribute("monthM4", monthM4);
                 request.setAttribute("jourM4", dayM4);
                 request.setAttribute("jourNbM4", dayNumberM4);
+                
+                
+                // On demande au ServeltClients de récupérer les clients actuellement dans les chambres
+                
+                if(firstAccess)
+                {
+                    firstAccess = false;
+                    response.sendRedirect(request.getContextPath()+"/ServletClients?action=listerClients");
+                    return;
+                }
                   
                 
              }  else if (action.equals("newResa")) {
-               request.setAttribute("newResa", "newResa");  
+                request.setAttribute("newResa", "newResa");  
                 forwardTo = "index.jsp?action=newResa"; 
                 message = "Liste des utilisateurs"; 
 

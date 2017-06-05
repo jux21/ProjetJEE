@@ -146,7 +146,7 @@
           <div class="col l2 m3 s12">
             <!-- Promo Content 1 goes here -->
             <div class="divider"></div>
-                <a href="ServletUsers?action=newResa" class="waves-effect waves-teal btn"><div class="section">
+                <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Simple</h5>
                   <p>Maria Sharapova<br> 9h - 21/05 - 25/05<br>65€</p>
                     </div></a>
