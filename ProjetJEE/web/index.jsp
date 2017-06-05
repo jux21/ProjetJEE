@@ -62,48 +62,73 @@
 
 
     <main>
+        <section>
+            <c:if test="${param['action'] == 'datepicker'}" >  
+                <c:set var="date" value="${requestScope['date']}"/>
+             <h2>Planning du ${date}</h2>  
+         </c:if>
+             
+         <c:if test="${param['action'] == 'chercherParLogin'}" >     
+             <h2>Détail de l'utilisateur </h2>  
+         </c:if>
         
         <c:if test="${param['action'] == 'newResa'}">
               <jsp:include page="newResa.jsp"/> 
          </c:if>
         
-       <c:if test="${! empty requestScope['userlogin']}">
-         
-            <jsp:include page="sidenave.jsp"/> 
-
+             <c:if test="${(param['action'] == 'connexion') || (param['action'] == 'datepicker')}">
+        
      
-        
-        
-<c:if test="${param['action'] != 'newResa'}">    
-       
-          
         
     
         
-        <section>
+        
+        <c:set var="total" value="${requestScope['month']}"/>
+        <c:set var="jour" value="${requestScope['jour']}"/>
+        <c:set var="jourNb" value="${requestScope['jourNb']}"/>
+       
+        <c:set var="total2" value="${requestScope['month2']}"/>
+        <c:set var="jour2" value="${requestScope['jour2']}"/>
+        <c:set var="jourNb2" value="${requestScope['jourNb2']}"/>
+       
+        <c:set var="total3" value="${requestScope['month3']}"/>
+        <c:set var="jour3" value="${requestScope['jour3']}"/>
+        <c:set var="jourNb3" value="${requestScope['jourNb3']}"/>
+        
+        <c:set var="totalM2" value="${requestScope['monthM2']}"/>
+        <c:set var="jourM2" value="${requestScope['jourM2']}"/>
+        <c:set var="jourNbM2" value="${requestScope['jourNbM2']}"/>
+        
+        <c:set var="totalM3" value="${requestScope['monthM3']}"/>
+        <c:set var="jourM3" value="${requestScope['jourM3']}"/>
+        <c:set var="jourNbM3" value="${requestScope['jourNbM3']}"/>
+        
+        <c:set var="totalM4" value="${requestScope['monthM4']}"/>
+        <c:set var="jourM4" value="${requestScope['jourM4']}"/>
+        <c:set var="jourNbM4" value="${requestScope['jourNbM4']}"/>
         
             <div class="agenda">
             <div class="row jours">
-              <div class="col l2 m3 s12">
+              <div class="col l2 hide-on-med-and-down">
             <!-- Promo Content 1 goes here -->
-            <h6>Jour <span class="nJour">1</span> <span class="moi">Moi</span></h6>
+            <h6>${jourM4}<span class="nJour">${jourNbM4}</span> <span class="moi">${totalM4}</span></h6>
           </div>
-          <div class="col l2 m3 hide-on-small-only">
-           <h6>Jour <span class="nJour">1</span> <span class="moi">Moi</span></h6>
+          <div class ="col l2 hide-on-med-and-down">
+           <h6>${jourM3}<span class="nJour">${jourNbM3}</span> <span class="moi">${totalM3}</span></h6>
           
           </div>
                <div class="col l2 m3 hide-on-small-only">
-           <h6>Jour <span class="nJour">1</span> <span class="moi">Moi</span></h6>
+           <h6>${jourM2}<span class="nJour">${jourNbM2}</span> <span class="moi">${totalM2}</span></h6>
           </div>
-               <div class="col l2 hide-on-med-and-down">
-            <h6>Jour <span class="nJour">1</span> <span class="moi">Moi</span></h6>
+               <div class="col l2 m3 s12 ">
+            <h6>${jour}<span class="nJour">${jourNb}</span> <span class="moi">${total}</span></h6>
           </div>
-               <div class="col l2 hide-on-med-and-down">
-           <h6>Jour <span class="nJour">1</span> <span class="moi">Moi</span></h6>
+               <div class="col l2 m3 hide-on-small-only">
+           <h6>${jour2}<span class="nJour">${jourNb2}</span> <span class="moi">${total}</span></h6>
           
           </div>
                <div class="col l2 hide-on-med-and-down">
-           <h6>Jour <span class="nJour">1</span> <span class="moi">Moi</span></h6>
+           <h6>${jour3}<span class="nJour">${jourNb3}</span> <span class="moi">${total3}</span></h6>
                </div>
          </div>
            <div class="row">
@@ -129,22 +154,30 @@
                 <div class="divider"></div>
                 
                   <h5>Dor3</h5>
+                  
                   <a class="waves-effect waves-teal btn"><div class="section">
+                          <h6>Lit 1</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 2</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 3</h6>
                   <p></p></div></a>
                 <div class="divider"></div>
                 
                   <h5>Dor4</h5>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                          <h6>Lit 1</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
-                  <p></p></div></a>
-                <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 2</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 3</h6>
+                  <p></p></div></a>
+				  <a class="waves-effect waves-teal btn"><div class="section">
+                                          <h6>Lit 4</h6>
                   <p></p></div></a>
                 </div>
           
@@ -169,22 +202,30 @@
                 <div class="divider"></div>
                 
                   <h5>Dor3</h5>
+                  
                   <a class="waves-effect waves-teal btn"><div class="section">
+                          <h6>Lit 1</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 2</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 3</h6>
                   <p></p></div></a>
                 <div class="divider"></div>
                 
                   <h5>Dor4</h5>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                          <h6>Lit 1</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
-                  <p></p></div></a>
-                <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 2</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 3</h6>
+                  <p></p></div></a>
+				  <a class="waves-effect waves-teal btn"><div class="section">
+                                          <h6>Lit 4</h6>
                   <p></p></div></a>
                 </div>
           
@@ -209,22 +250,30 @@
                 <div class="divider"></div>
                 
                   <h5>Dor3</h5>
+                  
                   <a class="waves-effect waves-teal btn"><div class="section">
+                          <h6>Lit 1</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 2</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 3</h6>
                   <p></p></div></a>
                 <div class="divider"></div>
                 
                   <h5>Dor4</h5>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                          <h6>Lit 1</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
-                  <p></p></div></a>
-                <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 2</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 3</h6>
+                  <p></p></div></a>
+				  <a class="waves-effect waves-teal btn"><div class="section">
+                                          <h6>Lit 4</h6>
                   <p></p></div></a>
                 </div>
           
@@ -248,22 +297,30 @@
                 <div class="divider"></div>
                 
                   <h5>Dor3</h5>
+                  
                   <a class="waves-effect waves-teal btn"><div class="section">
+                          <h6>Lit 1</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 2</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 3</h6>
                   <p></p></div></a>
                 <div class="divider"></div>
                 
                   <h5>Dor4</h5>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                          <h6>Lit 1</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
-                  <p></p></div></a>
-                <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 2</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 3</h6>
+                  <p></p></div></a>
+				  <a class="waves-effect waves-teal btn"><div class="section">
+                                          <h6>Lit 4</h6>
                   <p></p></div></a>
                 </div>
           
@@ -288,22 +345,30 @@
                 <div class="divider"></div>
                 
                   <h5>Dor3</h5>
+                  
                   <a class="waves-effect waves-teal btn"><div class="section">
+                          <h6>Lit 1</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 2</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 3</h6>
                   <p></p></div></a>
                 <div class="divider"></div>
                 
                   <h5>Dor4</h5>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                          <h6>Lit 1</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
-                  <p></p></div></a>
-                <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 2</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 3</h6>
+                  <p></p></div></a>
+				  <a class="waves-effect waves-teal btn"><div class="section">
+                                          <h6>Lit 4</h6>
                   <p></p></div></a>
                 </div>
           
@@ -328,22 +393,30 @@
                 <div class="divider"></div>
                 
                   <h5>Dor3</h5>
+                  
                   <a class="waves-effect waves-teal btn"><div class="section">
+                          <h6>Lit 1</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 2</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 3</h6>
                   <p></p></div></a>
                 <div class="divider"></div>
                 
                   <h5>Dor4</h5>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                          <h6>Lit 1</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
-                  <p></p></div></a>
-                <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 2</h6>
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 3</h6>
+                  <p></p></div></a>
+				  <a class="waves-effect waves-teal btn"><div class="section">
+                                          <h6>Lit 4</h6>
                   <p></p></div></a>
                 </div>
           
@@ -353,11 +426,22 @@
         
             </div>
         </c:if>
+            
+             
+        
+       <c:if test="${! empty requestScope['userlogin']}">
+         
+            <jsp:include page="sidenave.jsp"/> 
+
+     
+        
+        
+  
+    
+             
     </c:if>
             
-            
-        
-         
+       
             
             
             
@@ -409,6 +493,7 @@
             </c:if>
                    
         </c:if> 
+                   
                     
                 </section>
         </main>

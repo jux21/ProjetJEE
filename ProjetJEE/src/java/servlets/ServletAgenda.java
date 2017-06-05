@@ -12,6 +12,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.GregorianCalendar;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,8 +28,8 @@ import utilisateurs.modeles.Utilisateur;
  *
  * @author jux
  */
-@WebServlet(name = "ServletUsers", urlPatterns = {"/ServletUsers"})
-public class ServletUsers extends HttpServlet {
+@WebServlet(name = "ServletAgenda", urlPatterns = {"/ServletAgenda"})
+public class ServletAgenda extends HttpServlet {
     
     @EJB
     private GestionnaireUtilisateurs gestionnaireUtilisateurs;
@@ -52,11 +53,33 @@ public class ServletUsers extends HttpServlet {
         
         if (action != null) { 
             if (action.equals("connexion"))  {
-                forwardTo = "index.jsp?action=connexion";
+                
+                
+                  
+                
+             }  else if (action.equals("datepicker")) {
+                 
+                forwardTo = "index.jsp?action=datepicker";
                 message = "Connecté"; 
                 session = request.getSession(false);
                 login = (String) session.getAttribute("LOGIN");  
-                Calendar cal = Calendar.getInstance();
+                String date = request.getParameter("datepicker");
+               System.out.println(date);
+                request.setAttribute("date", date);
+                String[] array = date.split("(?!^)");
+                    int yearNb = 0;
+                    int monthNb = 0;
+                    int dayNb = 0;
+                for (int i = 0;i<array.length;i++) {
+                    System.out.println(array[i]);
+                    yearNb = Integer.parseInt(array[0]+array[1]+array[2]+array[3]);
+                    monthNb = Integer.parseInt(array[5]+array[6]);
+                    dayNb = Integer.parseInt(array[8]+array[9]);
+                }
+                monthNb = monthNb-1;
+                Calendar cal;
+                cal = new GregorianCalendar(yearNb,monthNb,dayNb);
+                
                 String month = new SimpleDateFormat("MMM").format(cal.getTime());
                 String dayNumber = new SimpleDateFormat("dd").format(cal.getTime());
                 String dayday = new SimpleDateFormat("E").format(cal.getTime());
@@ -137,72 +160,8 @@ public class ServletUsers extends HttpServlet {
                 request.setAttribute("monthM4", monthM4);
                 request.setAttribute("jourM4", dayM4);
                 request.setAttribute("jourNbM4", dayNumberM4);
-                  
-                
-             }  else if (action.equals("newResa")) {
-               request.setAttribute("newResa", "newResa");  
-                forwardTo = "index.jsp?action=newResa"; 
-                message = "Liste des utilisateurs"; 
-
             }
-            else if (action.equals("listerLesUtilisateurs")) {
-                Collection<Utilisateur> liste = gestionnaireUtilisateurs.getAllUsers();  
-                request.setAttribute("listeDesUsers", liste);  
-                request.setAttribute("numberOfUsers", gestionnaireUtilisateurs.getNumberOfUsers());
-               
-                forwardTo = "index.jsp?action=listerLesUtilisateurs"; 
-                message = "Liste des utilisateurs"; 
-
-           
-                
-            } else if (action.equals("creerUnUtilisateur")) {
-
-                gestionnaireUtilisateurs.creeUtilisateur(request.getParameter("nom"),  request.getParameter("login"));
-                Collection<Utilisateur> liste = gestionnaireUtilisateurs.getAllUsers();  
-                request.setAttribute("listeDesUsers", liste);  
-                request.setAttribute("numberOfUsers", gestionnaireUtilisateurs.getNumberOfUsers());
-
-                forwardTo = "index.jsp?action=listerLesUtilisateurs";  
-                message = "Création de l'utilisateur "+request.getParameter("login");
-                
-            
-                
-            } else if (action.equals("chercherParLogin")) {     
-                Collection<Utilisateur> user = gestionnaireUtilisateurs.getOneUserByLogin(request.getParameter("login")); 
-                request.setAttribute("listeDesUsers", user);  
-                request.setAttribute("numberOfUsers", gestionnaireUtilisateurs.getNumberOfUsers());
-            
-                forwardTo = "index.jsp?action=chercherParLogin";  
-                message = "Utilisateur avec le login "+request.getParameter("login");
-                
-            } else if (action.equals("updateUtilisateur")) {   
-                gestionnaireUtilisateurs.updateUtilisateur(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login")); 
-                Collection<Utilisateur> liste = gestionnaireUtilisateurs.getAllUsers();
-                request.setAttribute("listeDesUsers", liste);
-                request.setAttribute("numberOfUsers", gestionnaireUtilisateurs.getNumberOfUsers());
-                
-                forwardTo = "index.jsp?action=listerLesUtilisateurs";  
-                message = "Modification de l'utilisateur "+request.getParameter("login");
-                
-            } else if (action.equals("deleteUtilisateur")) {     
-                gestionnaireUtilisateurs.deleteUser(request.getParameter("login")); 
-                Collection<Utilisateur> liste = gestionnaireUtilisateurs.getAllUsers();
-                request.setAttribute("listeDesUsers", liste); 
-                request.setAttribute("numberOfUsers", gestionnaireUtilisateurs.getNumberOfUsers());
-                
-                forwardTo = "index.jsp?action=listerLesUtilisateurs";  
-                message = "Suppression de l'utilisateur "+request.getParameter("login");
-                   
-            } else if (action.equals("getUsersPaginated")) {
-          
-                Collection<Utilisateur> liste = gestionnaireUtilisateurs.getUsersPaginated(Integer.parseInt(request.getParameter("start")),Integer.parseInt(request.getParameter("end")));  
-                request.setAttribute("listeDesUsers", liste);  
-                request.setAttribute("numberOfUsers", gestionnaireUtilisateurs.getNumberOfUsers());
-                
-                forwardTo = "index.jsp?action=listerLesUtilisateurs";
-                message = "Liste des utilisateurs";
-   
-            } else {  
+             else {  
                 forwardTo = "index.jsp?action=todo";  
                 message = "La fonctionnalité pour le paramètre " + action + " est à implémenter !";  
             }  

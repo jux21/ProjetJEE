@@ -9,8 +9,8 @@
             <nav class="nav-extended #7cb342 light-green darken-1" role="navigation">
                 <div class="nav-wrapper">  
                      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-                    <a class="brand-logo flow-text">
-                        <span class="flow-text">Lou Souleou</span>
+                    <a href="ServletUsers?&action=connexion" class="brand-logo flow-text">
+                        <span class="flow-text">Lou Souleou planning</span>
                     </a>
                     
                     <!--session-->
@@ -21,7 +21,11 @@
                     
                     <div class="right">
                     <label for="" class="wrapper">
-	<input type="text" class="datepickerr">
+                        <form id="form_crea_u" action="ServletAgenda" method="get">
+                            <input type="text" class="datepickerr" name="datepicker">
+                            <input class="form_crea_u_action" type="hidden" name="action" value="datepicker"/> 
+                            <a class="waves-effect waves-light btn"><input type="submit" value="Afficher" name="submit"></a>
+                        </form>
 	<div class="datepicker sample"></div>
 </label>
                     </div>               
@@ -57,7 +61,11 @@
             <li><div class="divider"></div></li>
            
        <ul class="collapsible" data-collapsible="accordion">
+           
+           <li> <div class="collapsible-header"><a href="ServletUsers?&action=connexion">Afficher le planning</a></div>
     
+           <li> <div class="collapsible-header"><a href="ServletUsers?action=newResa">Ajouter un hôte</a></div>
+    </li>
     <li>
       <div class="collapsible-header"><i class="material-icons"></i>Créer un utilisateur</div>
               <div class="collapsible-body">
