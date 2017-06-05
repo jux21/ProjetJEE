@@ -112,6 +112,11 @@
         <c:set var="jourNbM4" value="${requestScope['jourNbM4']}"/>
         <section>
             <div class="agenda">
+                <div class="row suivprec">
+                   
+                <a class="left">précédent</a>
+                <a class="right">suivant</a>
+                </div>
             <div class="row jours">
               <div class="col l2 hide-on-med-and-down">
             <!-- Promo Content 1 goes here -->

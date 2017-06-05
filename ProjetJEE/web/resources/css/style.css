@@ -27,6 +27,10 @@ main header .nav-extended .nav-wrapper #form_crea_u a {
     
 }
 
+main section .agenda .suivprec.row {
+    margin-bottom: 30px;
+}
+
 main header .nav-extended .nav-wrapper .wrapper {
     margin-top :3px;
 }
