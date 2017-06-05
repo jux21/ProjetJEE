@@ -62,14 +62,18 @@
 
 
     <main>
-        <section>
+        
             <c:if test="${param['action'] == 'datepicker'}" >  
                 <c:set var="date" value="${requestScope['date']}"/>
-             <h2>Planning du ${date}</h2>  
+                <section>
+             <h2>Planning du ${date}</h2>
+                </section>
          </c:if>
              
-         <c:if test="${param['action'] == 'chercherParLogin'}" >     
+         <c:if test="${param['action'] == 'chercherParLogin'}" >  
+             <section>
              <h2>Détail de l'utilisateur </h2>  
+             <section>
          </c:if>
         
         <c:if test="${param['action'] == 'newResa'}">
@@ -106,7 +110,7 @@
         <c:set var="totalM4" value="${requestScope['monthM4']}"/>
         <c:set var="jourM4" value="${requestScope['jourM4']}"/>
         <c:set var="jourNbM4" value="${requestScope['jourNbM4']}"/>
-        
+        <section>
             <div class="agenda">
             <div class="row jours">
               <div class="col l2 hide-on-med-and-down">
@@ -425,6 +429,7 @@
         </div>
         
             </div>
+        </section>
         </c:if>
             
              

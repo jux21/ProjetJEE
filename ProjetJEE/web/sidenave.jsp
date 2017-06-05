@@ -9,8 +9,8 @@
             <nav class="nav-extended #7cb342 light-green darken-1" role="navigation">
                 <div class="nav-wrapper">  
                      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-                    <a href="ServletUsers?&action=connexion" class="brand-logo flow-text">
-                        <span class="flow-text">Lou Souleou planning</span>
+                    <a href="ServletUsers?&action=connexion" class="brand-logo left flow-text ">
+                        <span class="flow-text">Lou Souleou <span class="hide-on-med-and-down">planning</span></span>
                     </a>
                     
                     <!--session-->
@@ -19,16 +19,17 @@
                     <i class="material-icons">view_module</i>
                    
                     
-                    <div class="right">
-                    <label for="" class="wrapper">
+                    <ul id="nav-mobile" class="right ">
+                   <li> <label for="" class="wrapper">
                         <form id="form_crea_u" action="ServletAgenda" method="get">
-                            <input type="text" class="datepickerr" name="datepicker">
+                            <li class="hide-on-small-only">Sélectionner date</li>
+                            <li><a class="waves-effect waves-light btn datepick"><input type="text" class="datepickerr" name="datepicker"></a></li>
                             <input class="form_crea_u_action" type="hidden" name="action" value="datepicker"/> 
-                            <a class="waves-effect waves-light btn"><input type="submit" value="Afficher" name="submit"></a>
+                            <li> <a class="waves-effect waves-light btn"><input type="submit" value="Afficher" name="submit"></a></li>
                         </form>
 	<div class="datepicker sample"></div>
 </label>
-                    </div>               
+                    </ul>               
                         
                        
                         
@@ -62,9 +63,9 @@
            
        <ul class="collapsible" data-collapsible="accordion">
            
-           <li> <div class="collapsible-header"><a href="ServletUsers?&action=connexion">Afficher le planning</a></div>
+           <li><a href="ServletUsers?&action=connexion"><div class="collapsible-header">Afficher le planning</div></a>
     
-           <li> <div class="collapsible-header"><a href="ServletUsers?action=newResa">Ajouter un hôte</a></div>
+           <li><a href="ServletUsers?action=newResa"><div class="collapsible-header">Ajouter un hôte</div></a>
     </li>
     <li>
       <div class="collapsible-header"><i class="material-icons"></i>Créer un utilisateur</div>

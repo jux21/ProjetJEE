@@ -8,12 +8,38 @@ and open the template in the editor.
     Author     : Utilisateur
 */
 
+main header .nav-extended .nav-wrapper .brand-logo {
+        left: 4px;
+}
+
 .button-collapse {
         position: absolute;
     left: 40px;
     top: 0;
     z-index: 10;
 }
+
+main header .nav-extended .nav-wrapper #form_crea_u a {
+    padding: 0px;
+        margin: 0px;
+    margin-left: 6px;
+    padding-right: 10px;
+    
+}
+
+main header .nav-extended .nav-wrapper .wrapper {
+    margin-top :3px;
+}
+
+
+
+.datepick {
+    width:100px;
+    padding-left:9px;
+    padding-right:0px
+}
+.datepick input {
+    margin-top: -3px;}
 
 .agenda .row .btn * {
         font-size: 1.64rem;
@@ -99,6 +125,10 @@ box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 
 @media only screen and (max-width: 992px) {
     main {
     margin-top: 60px;
+}
+
+main header .nav-extended .nav-wrapper .brand-logo {
+        left: 52px;
 }
     
     
