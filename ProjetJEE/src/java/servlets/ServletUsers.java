@@ -50,7 +50,12 @@ public class ServletUsers extends HttpServlet {
         String forwardTo = "";  
         String message = "";
         
+        
+        
         if (action != null) { 
+            
+            System.out.println("ServletUseeeeeeeeeerrr");
+            
             if (action.equals("connexion"))  {
                 forwardTo = "index.jsp?action=connexion";
                 message = "Connecté"; 
@@ -216,11 +221,11 @@ public class ServletUsers extends HttpServlet {
             request.setAttribute("userlogin", login);
         }
 
-        if (session.isNew()) {
+        /*if (session.isNew()) {
             System.out.println("Not connected");
         } else {
             System.out.println("Connected "+(String) session.getAttribute("LOGIN"));
-        } 
+        } */
   
         RequestDispatcher dp = request.getRequestDispatcher(forwardTo + "&message=" + message);  
         dp.forward(request, response);  

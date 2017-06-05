@@ -70,10 +70,9 @@
       <div class="collapsible-header"><i class="material-icons"></i>Créer un utilisateur</div>
               <div class="collapsible-body">
                   
-                    <form onsubmit="return addUser();" id="form_crea_u" action="ServletUsers" method="get">  
-                        Nom : <input class="form_crea_u_nom" type="text" name="nom"/><br>  
-                        Prénom : <input class="form_crea_u_prenom" type="text" name="prenom"/><br>  
-                        Login : <input class="form_crea_u_login"  type="text" name="login"/><br> 
+                    <form onsubmit="return addUser();" id="form_crea_u" action="ServletUsers" method="get">   
+                        Login : <input class="form_crea_u_login"  type="text" name="login"/><br>
+                        Password : <input class="form_crea_u_login"  type="text" name="password"/><br>
                         <!-- Astuce pour passer des paramètres à une servlet depuis un formulaire JSP !-->  
                         <br><input class="form_crea_u_action" type="hidden" name="action" value="creerUnUtilisateur"/> 
                         <a class="waves-effect waves-light btn"><input type="submit" value="Créer utilisateur" name="submit"></a>
