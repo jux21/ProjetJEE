@@ -164,33 +164,38 @@ public class ServletClients extends HttpServlet {
 
             } else if (action.equals("insererClient")) { 
                 
-                //http://localhost:8080/index.jsp/ProjetJEE/ServletClients&action=insererClient&nom=Hubert&prenom=Julien&heureArrivee=15:24&jourArrivee=31/05/2017&jourDepart=04/06/2017&aPaye=true&estArrive=true&chambre=simple
-                //http://localhost:8080/index.jsp/ProjetJEE/ServletClients?nom=Hubert?prenom=Julien?heureArrivee=15:24?jourArrivee=31/05/2017?jourDepart=04/06/2017?aPaye=true?estArrive=true?chambre=simple&action=insererClient
-                //http://localhost:8080/ProjetJEE/index.jsp/ServletClients?action=insererClient&nom=Hubert&prenom=Julien&heureArrivee=15:24&jourArrivee=31/05/2017&jourDepart=04/06/2017&aPaye=true&estArrive=true&chambre=simple
-  
-                //gestionnaireClients.fuckyou();
-                
                 // Transformation des String en Date
-                String stringJourArrivee = request.getParameter("jourArrivee");
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.FRANCE);
+                String stringJourArrivee = request.getParameter("jourA");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.FRANCE);
                 LocalDate dateJourArrivee = LocalDate.parse(stringJourArrivee, formatter);
                 
-                String stringJourDepart = request.getParameter("jourDepart");
+                String stringJourDepart = request.getParameter("jourD");
                 LocalDate dateJourDepart = LocalDate.parse(stringJourDepart, formatter);
                 
-                System.out.println("jourArrivee : "+dateJourArrivee);
-                System.out.println("jourDepart : "+dateJourDepart);
-                
                 // Transformation des String en Boolean
-                Boolean aPaye = Boolean.valueOf(request.getParameter("aPaye"));
-                Boolean estArrive = Boolean.valueOf(request.getParameter("estArrive"));
+                Boolean aPaye = false,
+                        estArrive = false;
                 
-                gestionnaireClients.creeClient(request.getParameter("nom"), request.getParameter("prenom"), request.getParameter("heureArrivee"), dateJourArrivee, request.getParameter("chambre"), dateJourDepart, aPaye, estArrive);
-                //creeClient(String nom, String prenom, Date heureArrivee, Date jourArrivee, String chambre, Date jourDepart, boolean aPaye, boolean estArrive)
+                if (request.getParameterMap().containsKey("apaye"))
+                {
+                    if(request.getParameter("apaye").matches("on"))
+                    {
+                        aPaye = true;
+                    }
+                   
+                }
                 
-                //Collection<Client> liste = gestionnaireClients.getClientsCurrentlyInHouse();  
-                //request.setAttribute("listeDesClients", liste); 
-                forwardTo = "index.jsp?action=listerLesClients";  
+                if (request.getParameterMap().containsKey("estarrive"))
+                {
+                    if(request.getParameter("estarrive").matches("on"))
+                    {
+                        estArrive = true;
+                    }
+                }
+                
+                
+                gestionnaireClients.creeClient(request.getParameter("last_name"), request.getParameter("first_name"), request.getParameter("heureA"), dateJourArrivee, request.getParameter("chambre"), dateJourDepart, aPaye, estArrive, Float.valueOf(request.getParameter("prix"))); 
+                forwardTo = "ServletUsers?action=newResa"; 
                 message = "Insertion d'un client";
                 
             } else if (action.equals("modifierClient")) {

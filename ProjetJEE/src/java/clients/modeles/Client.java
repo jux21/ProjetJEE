@@ -45,11 +45,13 @@ public class Client implements Serializable {
     
     private boolean aPaye,
                     estArrive;
+    
+    private float prix;
 
     public Client() {
     }
 
-    public Client(String nom, String prenom, String heureArrivee, LocalDate jourArrivee, LocalDate jourDepart, boolean aPaye, boolean estArrive) {
+    public Client(String nom, String prenom, String heureArrivee, LocalDate jourArrivee, LocalDate jourDepart, boolean aPaye, boolean estArrive, float prix) {
         this.nom = nom;
         this.prenom = prenom;
         this.heureArrivee = heureArrivee;
@@ -57,8 +59,16 @@ public class Client implements Serializable {
         this.jourDepart = java.sql.Date.valueOf(jourDepart);
         this.aPaye = aPaye;
         this.estArrive = estArrive;
+        this.prix = prix;
     }
 
+    public float getPrix() {
+        return prix;
+    }
+
+    public void setPrix(float prix) {
+        this.prix = prix;
+    }
 
     public String getNom() {
         return nom;

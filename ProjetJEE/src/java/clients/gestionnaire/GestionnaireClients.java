@@ -29,8 +29,8 @@ public class GestionnaireClients {
     private EntityManager em;
     
     
-    public Client creeClient(String nom, String prenom, String heureArrivee, LocalDate jourArrivee, String chambre, LocalDate jourDepart, boolean aPaye, boolean estArrive) {  
-        Client c = new Client(nom, prenom, heureArrivee, jourArrivee, jourDepart, aPaye, estArrive); 
+    public Client creeClient(String nom, String prenom, String heureArrivee, LocalDate jourArrivee, String chambre, LocalDate jourDepart, boolean aPaye, boolean estArrive, float prix) {  
+        Client c = new Client(nom, prenom, heureArrivee, jourArrivee, jourDepart, aPaye, estArrive, prix); 
         Collection<Chambre> chambres;
         
         Query q = em.createQuery("SELECT c FROM Chambre c WHERE c.chambre ='"+chambre+"'"); 
