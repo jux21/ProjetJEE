@@ -8,6 +8,7 @@ package clients.gestionnaire;
 import chambres.modeles.Chambre;
 import clients.modeles.Client;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -57,228 +58,242 @@ public class GestionnaireClients {
     }
     
     
-    public Collection<Client> getClientsInSimpleToday() {  
+    public Collection<Client> getClientsInSimpleToday(String date) throws ParseException {  
         // Si le jour courant se situe entre le jour d'arrivée et le jour de départ
-        Query q = em.createQuery("SELECT c FROM Client c WHERE CURRENT_DATE  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'simple'");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, 0);      
+        Date currentDatePlusOne = c.getTime();
+        String reportDate = df.format(currentDatePlusOne);
+        
+        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'simple'");
         return q.getResultList();
     }
     
-    public Collection<Client> getClientsInSimpleTodayPlus1() {  
+    public Collection<Client> getClientsInSimpleTodayPlus1(String date) throws ParseException {  
         // Si le jour courant+1 se situe entre le jour d'arrivée et le jour de départ
-        Date currentDate = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, 1);      
+        Date currentDatePlusOne = c.getTime();
+        String reportDate = df.format(currentDatePlusOne);
+        
+        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'simple'");
+        return q.getResultList();
+    }
+    
+   public Collection<Client> getClientsInSimpleTodayPlus2(String date) throws ParseException {  
+        // Si le jour courant+2 se situe entre le jour d'arrivée et le jour de départ
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, 2);      
+        Date currentDatePlusOne = c.getTime();
+        String reportDate = df.format(currentDatePlusOne);
+        
+        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'simple'");
+        return q.getResultList();
+    }
+   
+   public Collection<Client> getClientsInSimpleTodayMoins1(String date) throws ParseException {  
+        // Si le jour courant-1 se situe entre le jour d'arrivée et le jour de départ 
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, -1);      
+        Date currentDatePlusOne = c.getTime();
+        String reportDate = df.format(currentDatePlusOne);
+        
+        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'simple'");
+        return q.getResultList();
+    }
+   
+   public Collection<Client> getClientsInSimpleTodayMoins2(String date) throws ParseException {  
+        // Si le jour courant-2 se situe entre le jour d'arrivée et le jour de départ
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, -2);      
+        Date currentDatePlusOne = c.getTime();
+        String reportDate = df.format(currentDatePlusOne);
+        
+        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'simple'");
+        return q.getResultList();
+    }
+   
+   public Collection<Client> getClientsInSimpleTodayMoins3(String date) throws ParseException {  
+        // Si le jour courant-3 se situe entre le jour d'arrivée et le jour de départ
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, -3);      
+        Date currentDatePlusOne = c.getTime();
+        String reportDate = df.format(currentDatePlusOne);
+        
+        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'simple'");
+        return q.getResultList();
+    }
+   
+   public Collection<Client> getClientsInZenToday(String date) throws ParseException {  
+        // Si le jour courant se situe entre le jour d'arrivée et le jour de départ
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, 0);      
+        Date currentDatePlusOne = c.getTime();
+        String reportDate = df.format(currentDatePlusOne);
+        
+        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"' BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'zen'");
+        return q.getResultList();
+    }
+   
+    public Collection<Client> getClientsInZenTodayPlus1(String date) throws ParseException {  
+        // Si le jour courant+1 se situe entre le jour d'arrivée et le jour de départ
+        /*Date currentDate = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(currentDate);
         c.add(Calendar.DAY_OF_MONTH, 1);
         Date currentDatePlusOne = c.getTime();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String reportDate = df.format(currentDatePlusOne);*/
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, 1);      
+        Date currentDatePlusOne = c.getTime();
         String reportDate = df.format(currentDatePlusOne);
         
-        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'simple'");
+        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'zen'");
         return q.getResultList();
     }
     
-   public Collection<Client> getClientsInSimpleTodayPlus2() {  
+   public Collection<Client> getClientsInZenTodayPlus2(String date) throws ParseException {  
         // Si le jour courant+2 se situe entre le jour d'arrivée et le jour de départ
-        Date currentDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DAY_OF_MONTH, 2);
-        Date currentDatePlusOne = c.getTime();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, 2);      
+        Date currentDatePlusOne = c.getTime();
         String reportDate = df.format(currentDatePlusOne);
         
-        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'simple'");
+        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'zen'");
         return q.getResultList();
     }
    
-   public Collection<Client> getClientsInSimpleTodayMoins1() {  
+   public Collection<Client> getClientsInZenTodayMoins1(String date) throws ParseException {  
         // Si le jour courant-1 se situe entre le jour d'arrivée et le jour de départ 
-        Date currentDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DAY_OF_MONTH, -1);
-        Date currentDatePlusOne = c.getTime();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, -1);      
+        Date currentDatePlusOne = c.getTime();
         String reportDate = df.format(currentDatePlusOne);
         
-        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'simple'");
+        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'zen'");
         return q.getResultList();
     }
    
-   public Collection<Client> getClientsInSimpleTodayMoins2() {  
+   public Collection<Client> getClientsInZenTodayMoins2(String date) throws ParseException {  
         // Si le jour courant-2 se situe entre le jour d'arrivée et le jour de départ
-        Date currentDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DAY_OF_MONTH, -2);
-        Date currentDatePlusOne = c.getTime();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, -2);      
+        Date currentDatePlusOne = c.getTime();
         String reportDate = df.format(currentDatePlusOne);
         
-        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'simple'");
+        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'zen'");
         return q.getResultList();
     }
    
-   public Collection<Client> getClientsInSimpleTodayMoins3() {  
+   public Collection<Client> getClientsInZenTodayMoins3(String date) throws ParseException {  
         // Si le jour courant-3 se situe entre le jour d'arrivée et le jour de départ
-        Date currentDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DAY_OF_MONTH, -3);
-        Date currentDatePlusOne = c.getTime();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, -3);      
+        Date currentDatePlusOne = c.getTime();
         String reportDate = df.format(currentDatePlusOne);
-        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'simple'");
+        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'zen'");
         return q.getResultList();
     }
    
-   public Collection<Client> getClientsInZenToday() {  
+   
+   public Collection<Client> getClientsInSwaziToday(String date) throws ParseException {  
         // Si le jour courant se situe entre le jour d'arrivée et le jour de départ
-        Query q = em.createQuery("SELECT c FROM Client c WHERE CURRENT_DATE  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'zen'");
+       DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, 0);      
+        Date currentDatePlusOne = c.getTime();
+        String reportDate = df.format(currentDatePlusOne);
+        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'swazi'");
         return q.getResultList();
     }
    
-    public Collection<Client> getClientsInZenTodayPlus1() {  
+    public Collection<Client> getClientsInSwaziTodayPlus1(String date) throws ParseException {  
         // Si le jour courant+1 se situe entre le jour d'arrivée et le jour de départ
-        Date currentDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DAY_OF_MONTH, 1);
-        Date currentDatePlusOne = c.getTime();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        String reportDate = df.format(currentDatePlusOne);
-        
-        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'zen'");
-        return q.getResultList();
-    }
-    
-   public Collection<Client> getClientsInZenTodayPlus2() {  
-        // Si le jour courant+2 se situe entre le jour d'arrivée et le jour de départ
-        Date currentDate = new Date();
         Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DAY_OF_MONTH, 2);
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, 1);      
         Date currentDatePlusOne = c.getTime();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        String reportDate = df.format(currentDatePlusOne);
-        
-        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'zen'");
-        return q.getResultList();
-    }
-   
-   public Collection<Client> getClientsInZenTodayMoins1() {  
-        // Si le jour courant-1 se situe entre le jour d'arrivée et le jour de départ 
-        Date currentDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DAY_OF_MONTH, -1);
-        Date currentDatePlusOne = c.getTime();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        String reportDate = df.format(currentDatePlusOne);
-        
-        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'zen'");
-        return q.getResultList();
-    }
-   
-   public Collection<Client> getClientsInZenTodayMoins2() {  
-        // Si le jour courant-2 se situe entre le jour d'arrivée et le jour de départ
-        Date currentDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DAY_OF_MONTH, -2);
-        Date currentDatePlusOne = c.getTime();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        String reportDate = df.format(currentDatePlusOne);
-        
-        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'zen'");
-        return q.getResultList();
-    }
-   
-   public Collection<Client> getClientsInZenTodayMoins3() {  
-        // Si le jour courant-3 se situe entre le jour d'arrivée et le jour de départ
-        Date currentDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DAY_OF_MONTH, -3);
-        Date currentDatePlusOne = c.getTime();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        String reportDate = df.format(currentDatePlusOne);
-        Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'zen'");
-        return q.getResultList();
-    }
-   
-   
-   public Collection<Client> getClientsInSwaziToday() {  
-        // Si le jour courant se situe entre le jour d'arrivée et le jour de départ
-        Query q = em.createQuery("SELECT c FROM Client c WHERE CURRENT_DATE  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'swazi'");
-        return q.getResultList();
-    }
-   
-    public Collection<Client> getClientsInSwaziTodayPlus1() {  
-        // Si le jour courant+1 se situe entre le jour d'arrivée et le jour de départ
-        Date currentDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DAY_OF_MONTH, 1);
-        Date currentDatePlusOne = c.getTime();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String reportDate = df.format(currentDatePlusOne);
         
         Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'swazi'");
         return q.getResultList();
     }
     
-   public Collection<Client> getClientsInSwaziTodayPlus2() {  
+   public Collection<Client> getClientsInSwaziTodayPlus2(String date) throws ParseException {  
         // Si le jour courant+2 se situe entre le jour d'arrivée et le jour de départ
-        Date currentDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DAY_OF_MONTH, 2);
-        Date currentDatePlusOne = c.getTime();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, 2);      
+        Date currentDatePlusOne = c.getTime();
         String reportDate = df.format(currentDatePlusOne);
         
         Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'swazi'");
         return q.getResultList();
     }
    
-   public Collection<Client> getClientsInSwaziTodayMoins1() {  
+   public Collection<Client> getClientsInSwaziTodayMoins1(String date) throws ParseException {  
         // Si le jour courant-1 se situe entre le jour d'arrivée et le jour de départ 
-        Date currentDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DAY_OF_MONTH, -1);
-        Date currentDatePlusOne = c.getTime();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, -1);      
+        Date currentDatePlusOne = c.getTime();
         String reportDate = df.format(currentDatePlusOne);
         
         Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'swazi'");
         return q.getResultList();
     }
    
-   public Collection<Client> getClientsInSwaziTodayMoins2() {  
+   public Collection<Client> getClientsInSwaziTodayMoins2(String date) throws ParseException {  
         // Si le jour courant-2 se situe entre le jour d'arrivée et le jour de départ
-        Date currentDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DAY_OF_MONTH, -2);
-        Date currentDatePlusOne = c.getTime();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, -2);      
+        Date currentDatePlusOne = c.getTime();
         String reportDate = df.format(currentDatePlusOne);
         
         Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'swazi'");
         return q.getResultList();
     }
    
-   public Collection<Client> getClientsInSwaziTodayMoins3() {  
+   public Collection<Client> getClientsInSwaziTodayMoins3(String date) throws ParseException {  
         // Si le jour courant-3 se situe entre le jour d'arrivée et le jour de départ
-        Date currentDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(currentDate);
-        c.add(Calendar.DAY_OF_MONTH, -3);
-        Date currentDatePlusOne = c.getTime();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(df.parse(date));
+        c.add(Calendar.DATE, -3);      
+        Date currentDatePlusOne = c.getTime();
         String reportDate = df.format(currentDatePlusOne);
+       
         Query q = em.createQuery("SELECT c FROM Client c WHERE '"+reportDate+"'  BETWEEN c.jourArrivee AND c.jourDepart AND c.chambre = 'swazi'");
         return q.getResultList();
     }

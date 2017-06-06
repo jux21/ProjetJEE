@@ -405,7 +405,7 @@
                             <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
                             <td>${u.prix}€</td>
                         </tr>  
-                 </c:forEach>
+                        </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">

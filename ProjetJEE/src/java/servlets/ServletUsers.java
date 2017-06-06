@@ -9,11 +9,15 @@ import clients.gestionnaire.GestionnaireClients;
 import clients.modeles.Client;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -62,134 +66,141 @@ public class ServletUsers extends HttpServlet {
             
             if (action.equals("connexion"))  {
                  
-                session = request.getSession(false);
-                login = (String) session.getAttribute("LOGIN");  
-                Calendar cal = Calendar.getInstance();
-                String month = new SimpleDateFormat("MMM").format(cal.getTime());
-                String dayNumber = new SimpleDateFormat("dd").format(cal.getTime());
-                String dayday = new SimpleDateFormat("E").format(cal.getTime());
-                String day = null;
-                int dayInt = cal.get(Calendar.DAY_OF_WEEK); 
-                switch (dayInt) {
-                    case Calendar.SUNDAY:
-                      day = "Lundi";
-                    case Calendar.MONDAY:
-                       day = "Mardi";
-                    case Calendar.TUESDAY:
-                      day = "Mercredi";
-                    case Calendar.THURSDAY:
-                      day = "Vendredi";
-                    case Calendar.WEDNESDAY:
-                      day = "Jeudi";
-                    case Calendar.FRIDAY:
-                      day = "Samedi";
-                    case Calendar.SATURDAY:
-                      day = "Dimanche";
+                try {
+                    session = request.getSession(false);
+                    login = (String) session.getAttribute("LOGIN");
+                    Calendar cal = Calendar.getInstance();
+                    String month = new SimpleDateFormat("MMM").format(cal.getTime());
+                    String dayNumber = new SimpleDateFormat("dd").format(cal.getTime());
+                    String dayday = new SimpleDateFormat("E").format(cal.getTime());
+                    String day = null;
+                    int dayInt = cal.get(Calendar.DAY_OF_WEEK);
+                    switch (dayInt) {
+                        case Calendar.SUNDAY:
+                            day = "Lundi";
+                        case Calendar.MONDAY:
+                            day = "Mardi";
+                        case Calendar.TUESDAY:
+                            day = "Mercredi";
+                        case Calendar.THURSDAY:
+                            day = "Vendredi";
+                        case Calendar.WEDNESDAY:
+                            day = "Jeudi";
+                        case Calendar.FRIDAY:
+                            day = "Samedi";
+                        case Calendar.SATURDAY:
+                            day = "Dimanche";
+                    }
+                    
+                    request.setAttribute("month", month);
+                    request.setAttribute("jour", dayday);
+                    request.setAttribute("jourNb", dayNumber);
+                    
+                    cal.add( Calendar.DATE, 1 );
+                    
+                    String month2 = new SimpleDateFormat("MMM").format(cal.getTime());
+                    String dayNumber2 = new SimpleDateFormat("dd").format(cal.getTime());
+                    String day2 = new SimpleDateFormat("E").format(cal.getTime());
+                    
+                    System.out.println(day+dayInt);
+                    request.setAttribute("month2", month2);
+                    request.setAttribute("jour2", day2);
+                    request.setAttribute("jourNb2", dayNumber2);
+                    
+                    cal.add( Calendar.DATE, 1 );
+                    
+                    String month3 = new SimpleDateFormat("MMM").format(cal.getTime());
+                    String dayNumber3 = new SimpleDateFormat("dd").format(cal.getTime());
+                    String day3 = new SimpleDateFormat("E").format(cal.getTime());
+                    
+                    System.out.println(day+dayInt);
+                    request.setAttribute("month3", month3);
+                    request.setAttribute("jour3", day3);
+                    request.setAttribute("jourNb3", dayNumber3);
+                    
+                    cal.add( Calendar.DATE, -3 );
+                    
+                    String monthM2 = new SimpleDateFormat("MMM").format(cal.getTime());
+                    String dayNumberM2 = new SimpleDateFormat("dd").format(cal.getTime());
+                    String dayM2 = new SimpleDateFormat("E").format(cal.getTime());
+                    
+                    System.out.println(day+dayInt);
+                    request.setAttribute("monthM2", monthM2);
+                    request.setAttribute("jourM2", dayM2);
+                    request.setAttribute("jourNbM2", dayNumberM2);
+                    
+                    cal.add( Calendar.DATE, -1 );
+                    
+                    String monthM3 = new SimpleDateFormat("MMM").format(cal.getTime());
+                    String dayNumberM3 = new SimpleDateFormat("dd").format(cal.getTime());
+                    String dayM3 = new SimpleDateFormat("E").format(cal.getTime());
+                    
+                    System.out.println(day+dayInt);
+                    request.setAttribute("monthM3", monthM3);
+                    request.setAttribute("jourM3", dayM3);
+                    request.setAttribute("jourNbM3", dayNumberM3);
+                    
+                    cal.add( Calendar.DATE, -1 );
+                    
+                    String monthM4 = new SimpleDateFormat("MMM").format(cal.getTime());
+                    String dayNumberM4 = new SimpleDateFormat("dd").format(cal.getTime());
+                    String dayM4 = new SimpleDateFormat("E").format(cal.getTime());
+                    
+                    System.out.println(day+dayInt);
+                    request.setAttribute("monthM4", monthM4);
+                    request.setAttribute("jourM4", dayM4);
+                    request.setAttribute("jourNbM4", dayNumberM4);
+                    
+                    
+                    // On récupère les clients actuellement dans les chambres et les jours précédents et suivants
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date date = new Date();
+                    System.out.println("cacacacaacccacacacacac "+dateFormat.format(date));
+                    Collection<Client> liste = gestionnaireClients.getClientsInSimpleToday(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsSimpleToday", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayPlus1(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsSimpleTodayPlus1", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayPlus2(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsSimpleTodayPlus2", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayMoins1(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsSimpleTodayMoins1", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayMoins2(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsSimpleTodayMoins2", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayMoins3(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsSimpleTodayMoins3", liste);
+                    
+                    liste = gestionnaireClients.getClientsInZenToday(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsZenToday", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayPlus1(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsZenTodayPlus1", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayPlus2(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsZenTodayPlus2", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayMoins1(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsZenTodayMoins1", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayMoins2(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsZenTodayMoins2", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayMoins3(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsZenTodayMoins3", liste);
+                    
+                    liste = gestionnaireClients.getClientsInSwaziToday(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsSwaziToday", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayPlus1(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsSwaziTodayPlus1", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayPlus2(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsSwaziTodayPlus2", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayMoins1(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsSwaziTodayMoins1", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayMoins2(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsSwaziTodayMoins2", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayMoins3(dateFormat.format(date));
+                    request.setAttribute("listeDesClientsSwaziTodayMoins3", liste);
+                    
+                    
+                    forwardTo = "index.jsp?action=connexion";
+                    message = "Connecté";
+                } catch (ParseException ex) {
+                    Logger.getLogger(ServletUsers.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            
-                request.setAttribute("month", month);
-                request.setAttribute("jour", dayday);
-                request.setAttribute("jourNb", dayNumber); 
-                
-                cal.add( Calendar.DATE, 1 );
-                
-                String month2 = new SimpleDateFormat("MMM").format(cal.getTime());
-                String dayNumber2 = new SimpleDateFormat("dd").format(cal.getTime());
-                String day2 = new SimpleDateFormat("E").format(cal.getTime());
-                
-                System.out.println(day+dayInt);
-                request.setAttribute("month2", month2);
-                request.setAttribute("jour2", day2);
-                request.setAttribute("jourNb2", dayNumber2); 
-                
-                cal.add( Calendar.DATE, 1 );
-                
-                String month3 = new SimpleDateFormat("MMM").format(cal.getTime());
-                String dayNumber3 = new SimpleDateFormat("dd").format(cal.getTime());
-                String day3 = new SimpleDateFormat("E").format(cal.getTime());
-                
-                System.out.println(day+dayInt);
-                request.setAttribute("month3", month3);
-                request.setAttribute("jour3", day3);
-                request.setAttribute("jourNb3", dayNumber3); 
-                
-                cal.add( Calendar.DATE, -3 );
-                
-                String monthM2 = new SimpleDateFormat("MMM").format(cal.getTime());
-                String dayNumberM2 = new SimpleDateFormat("dd").format(cal.getTime());
-                String dayM2 = new SimpleDateFormat("E").format(cal.getTime());
-                
-                System.out.println(day+dayInt);
-                request.setAttribute("monthM2", monthM2);
-                request.setAttribute("jourM2", dayM2);
-                request.setAttribute("jourNbM2", dayNumberM2); 
-                
-                cal.add( Calendar.DATE, -1 );
-                
-                String monthM3 = new SimpleDateFormat("MMM").format(cal.getTime());
-                String dayNumberM3 = new SimpleDateFormat("dd").format(cal.getTime());
-                String dayM3 = new SimpleDateFormat("E").format(cal.getTime());
-                
-                System.out.println(day+dayInt);
-                request.setAttribute("monthM3", monthM3);
-                request.setAttribute("jourM3", dayM3);
-                request.setAttribute("jourNbM3", dayNumberM3);
-                
-                cal.add( Calendar.DATE, -1 );
-                
-                String monthM4 = new SimpleDateFormat("MMM").format(cal.getTime());
-                String dayNumberM4 = new SimpleDateFormat("dd").format(cal.getTime());
-                String dayM4 = new SimpleDateFormat("E").format(cal.getTime());
-                
-                System.out.println(day+dayInt);
-                request.setAttribute("monthM4", monthM4);
-                request.setAttribute("jourM4", dayM4);
-                request.setAttribute("jourNbM4", dayNumberM4);
-                
-                
-                // On récupère les clients actuellement dans les chambres et les jours précédents et suivants
-                Collection<Client> liste = gestionnaireClients.getClientsInSimpleToday();  
-                request.setAttribute("listeDesClientsSimpleToday", liste); 
-                liste = gestionnaireClients.getClientsInSimpleTodayPlus1();  
-                request.setAttribute("listeDesClientsSimpleTodayPlus1", liste);
-                liste = gestionnaireClients.getClientsInSimpleTodayPlus2();   
-                request.setAttribute("listeDesClientsSimpleTodayPlus2", liste);
-                liste = gestionnaireClients.getClientsInSimpleTodayMoins1();   
-                request.setAttribute("listeDesClientsSimpleTodayMoins1", liste);
-                liste = gestionnaireClients.getClientsInSimpleTodayMoins2();   
-                request.setAttribute("listeDesClientsSimpleTodayMoins2", liste);
-                liste = gestionnaireClients.getClientsInSimpleTodayMoins3();   
-                request.setAttribute("listeDesClientsSimpleTodayMoins3", liste);
-                
-                liste = gestionnaireClients.getClientsInZenToday();  
-                request.setAttribute("listeDesClientsZenToday", liste); 
-                liste = gestionnaireClients.getClientsInZenTodayPlus1();  
-                request.setAttribute("listeDesClientsZenTodayPlus1", liste);
-                liste = gestionnaireClients.getClientsInZenTodayPlus2();   
-                request.setAttribute("listeDesClientsZenTodayPlus2", liste);
-                liste = gestionnaireClients.getClientsInZenTodayMoins1();   
-                request.setAttribute("listeDesClientsZenTodayMoins1", liste);
-                liste = gestionnaireClients.getClientsInZenTodayMoins2();   
-                request.setAttribute("listeDesClientsZenTodayMoins2", liste);
-                liste = gestionnaireClients.getClientsInZenTodayMoins3();   
-                request.setAttribute("listeDesClientsZenTodayMoins3", liste);
-                
-                liste = gestionnaireClients.getClientsInSwaziToday();  
-                request.setAttribute("listeDesClientsSwaziToday", liste); 
-                liste = gestionnaireClients.getClientsInSwaziTodayPlus1();  
-                request.setAttribute("listeDesClientsSwaziTodayPlus1", liste);
-                liste = gestionnaireClients.getClientsInSwaziTodayPlus2();   
-                request.setAttribute("listeDesClientsSwaziTodayPlus2", liste);
-                liste = gestionnaireClients.getClientsInSwaziTodayMoins1();   
-                request.setAttribute("listeDesClientsSwaziTodayMoins1", liste);
-                liste = gestionnaireClients.getClientsInSwaziTodayMoins2();   
-                request.setAttribute("listeDesClientsSwaziTodayMoins2", liste);
-                liste = gestionnaireClients.getClientsInSwaziTodayMoins3();   
-                request.setAttribute("listeDesClientsSwaziTodayMoins3", liste);
-                
-                
-                forwardTo = "index.jsp?action=connexion";
-                message = "Connecté";
                 
                   
                 
@@ -199,82 +210,32 @@ public class ServletUsers extends HttpServlet {
                 message = "Liste des utilisateurs"; 
 
             }
-            else if (action.equals("listerLesUtilisateurs")) {
-                Collection<Utilisateur> liste = gestionnaireUtilisateurs.getAllUsers();  
-                request.setAttribute("listeDesUsers", liste);  
-                request.setAttribute("numberOfUsers", gestionnaireUtilisateurs.getNumberOfUsers());
-               
-                forwardTo = "index.jsp?action=listerLesUtilisateurs"; 
-                message = "Liste des utilisateurs"; 
-
            
                 
             } else if (action.equals("creerUnUtilisateur")) {
 
                 gestionnaireUtilisateurs.creeUtilisateur(request.getParameter("nom"),  request.getParameter("login"));
-                Collection<Utilisateur> liste = gestionnaireUtilisateurs.getAllUsers();  
-                request.setAttribute("listeDesUsers", liste);  
-                request.setAttribute("numberOfUsers", gestionnaireUtilisateurs.getNumberOfUsers());
-
                 forwardTo = "index.jsp?action=listerLesUtilisateurs";  
                 message = "Création de l'utilisateur "+request.getParameter("login");
-                
+ 
             
-                
-            } else if (action.equals("chercherParLogin")) {     
-                Collection<Utilisateur> user = gestionnaireUtilisateurs.getOneUserByLogin(request.getParameter("login")); 
-                request.setAttribute("listeDesUsers", user);  
-                request.setAttribute("numberOfUsers", gestionnaireUtilisateurs.getNumberOfUsers());
-            
-                forwardTo = "index.jsp?action=chercherParLogin";  
-                message = "Utilisateur avec le login "+request.getParameter("login");
-                
-            } else if (action.equals("updateUtilisateur")) {   
-                gestionnaireUtilisateurs.updateUtilisateur(request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("login")); 
-                Collection<Utilisateur> liste = gestionnaireUtilisateurs.getAllUsers();
-                request.setAttribute("listeDesUsers", liste);
-                request.setAttribute("numberOfUsers", gestionnaireUtilisateurs.getNumberOfUsers());
-                
-                forwardTo = "index.jsp?action=listerLesUtilisateurs";  
-                message = "Modification de l'utilisateur "+request.getParameter("login");
-                
-            } else if (action.equals("deleteUtilisateur")) {     
-                gestionnaireUtilisateurs.deleteUser(request.getParameter("login")); 
-                Collection<Utilisateur> liste = gestionnaireUtilisateurs.getAllUsers();
-                request.setAttribute("listeDesUsers", liste); 
-                request.setAttribute("numberOfUsers", gestionnaireUtilisateurs.getNumberOfUsers());
-                
-                forwardTo = "index.jsp?action=listerLesUtilisateurs";  
-                message = "Suppression de l'utilisateur "+request.getParameter("login");
-                   
-            } else if (action.equals("getUsersPaginated")) {
-          
-                Collection<Utilisateur> liste = gestionnaireUtilisateurs.getUsersPaginated(Integer.parseInt(request.getParameter("start")),Integer.parseInt(request.getParameter("end")));  
-                request.setAttribute("listeDesUsers", liste);  
-                request.setAttribute("numberOfUsers", gestionnaireUtilisateurs.getNumberOfUsers());
-                
-                forwardTo = "index.jsp?action=listerLesUtilisateurs";
-                message = "Liste des utilisateurs";
    
             } else {  
                 forwardTo = "index.jsp?action=todo";  
                 message = "La fonctionnalité pour le paramètre " + action + " est à implémenter !";  
             }  
             
-         //   } else {
-           //     message = "Veuillez-vous connecter";
-            //}  
-        }
+        
         
         if (login != null) {
             request.setAttribute("userlogin", login);
         }
 
-        /*if (session.isNew()) {
+        if (session.isNew()) {
             System.out.println("Not connected");
         } else {
             System.out.println("Connected "+(String) session.getAttribute("LOGIN"));
-        } */
+        }
   
         RequestDispatcher dp = request.getRequestDispatcher(forwardTo + "&message=" + message);  
         dp.forward(request, response);  

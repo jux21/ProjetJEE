@@ -66,6 +66,7 @@
            <li><a href="ServletUsers?&action=connexion"><div class="collapsible-header">Afficher le planning</div></a>
     
            <li><a href="ServletUsers?action=newResa"><div class="collapsible-header">Ajouter un hôte</div></a>
+               
     </li>
     <li>
       <div class="collapsible-header"><i class="material-icons"></i>Créer un utilisateur</div>
