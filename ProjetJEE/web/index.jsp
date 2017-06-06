@@ -112,12 +112,16 @@
         <c:set var="totalM4" value="${requestScope['monthM4']}"/>
         <c:set var="jourM4" value="${requestScope['jourM4']}"/>
         <c:set var="jourNbM4" value="${requestScope['jourNbM4']}"/>
+        
+        <c:set var="dateF" value="${requestScope['currentdate']}"/>
+        
         <section>
             <div class="agenda">
+                <h2>Planning du ${dateF}</h2>
                 <div class="row suivprec">
                    
-                <a  class="left">Précédent</a>
-                <a class="right">Suivant</a>
+                <a href="ServletAgenda?currentdate=${dateF}&action=precedent" class="left">Précédent</a>
+                <a href="ServletAgenda?currentdate=${dateF}&action=suivant" class="right">Suivant</a>
                 </div>
             <div class="row jours">
               <div class="col l2 hide-on-med-and-down">

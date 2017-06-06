@@ -75,6 +75,8 @@ public class ServletAgenda extends HttpServlet {
                     message = "Connecté";
                     session = request.getSession(false);
                     login = (String) session.getAttribute("LOGIN");
+                    
+                    
                     String date = request.getParameter("datepicker");
                     System.out.println(date);
                     request.setAttribute("date", date);
@@ -91,6 +93,11 @@ public class ServletAgenda extends HttpServlet {
                     monthNb = monthNb-1;
                     Calendar cal;
                     cal = new GregorianCalendar(yearNb,monthNb,dayNb);
+                    
+                    Date dateC =  cal.getTime();    
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String dateF = sdf.format( dateC );
+                request.setAttribute("currentdate", dateF);
                     
                     String month = new SimpleDateFormat("MMM").format(cal.getTime());
                     String dayNumber = new SimpleDateFormat("dd").format(cal.getTime());
@@ -217,7 +224,202 @@ public class ServletAgenda extends HttpServlet {
                 } catch (ParseException ex) {
                     Logger.getLogger(ServletAgenda.class.getName()).log(Level.SEVERE, null, ex);
                 }
-             } 
+             
+             
+             
+             } else if (action.equals("suivant")) {
+                 
+                 forwardTo = "index.jsp?action=suivant";
+                message = "Connecté"; 
+                session = request.getSession(false);
+                login = (String) session.getAttribute("LOGIN");  
+                String currentdate = request.getParameter("currentdate");
+                
+                String[] array = currentdate.split("(?!^)");
+                    int yearNb = 0;
+                    int monthNb = 0;
+                    int dayNb = 0;
+                for (int i = 0;i<array.length;i++) {
+                    System.out.println(array[i]);
+                    yearNb = Integer.parseInt(array[0]+array[1]+array[2]+array[3]);
+                    monthNb = Integer.parseInt(array[5]+array[6]);
+                    dayNb = Integer.parseInt(array[8]+array[9]);
+                }
+                
+                monthNb = monthNb-1;
+                Calendar cal;
+                cal = new GregorianCalendar(yearNb,monthNb,dayNb);
+                cal.add( Calendar.DATE, 6 );
+                
+                Date date =  cal.getTime();    
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String dateF = sdf.format( date );
+                request.setAttribute("currentdate", dateF);
+                
+                 String month = new SimpleDateFormat("MMM").format(cal.getTime());
+                String dayNumber = new SimpleDateFormat("dd").format(cal.getTime());
+                String day = new SimpleDateFormat("E").format(cal.getTime());
+                
+                int dayInt = cal.get(Calendar.DAY_OF_WEEK); 
+                
+            
+                request.setAttribute("month", month);
+                request.setAttribute("jour", day);
+                request.setAttribute("jourNb", dayNumber); 
+                
+                cal.add( Calendar.DATE, 1 );
+                
+                String month2 = new SimpleDateFormat("MMM").format(cal.getTime());
+                String dayNumber2 = new SimpleDateFormat("dd").format(cal.getTime());
+                String day2 = new SimpleDateFormat("E").format(cal.getTime());
+                
+                
+                request.setAttribute("month2", month2);
+                request.setAttribute("jour2", day2);
+                request.setAttribute("jourNb2", dayNumber2); 
+                
+                cal.add( Calendar.DATE, 1 );
+                
+                String month3 = new SimpleDateFormat("MMM").format(cal.getTime());
+                String dayNumber3 = new SimpleDateFormat("dd").format(cal.getTime());
+                String day3 = new SimpleDateFormat("E").format(cal.getTime());
+                
+                
+                request.setAttribute("month3", month3);
+                request.setAttribute("jour3", day3);
+                request.setAttribute("jourNb3", dayNumber3); 
+                
+                cal.add( Calendar.DATE, -3 );
+                
+                String monthM2 = new SimpleDateFormat("MMM").format(cal.getTime());
+                String dayNumberM2 = new SimpleDateFormat("dd").format(cal.getTime());
+                String dayM2 = new SimpleDateFormat("E").format(cal.getTime());
+                
+                
+                request.setAttribute("monthM2", monthM2);
+                request.setAttribute("jourM2", dayM2);
+                request.setAttribute("jourNbM2", dayNumberM2); 
+                
+                cal.add( Calendar.DATE, -1 );
+                
+                String monthM3 = new SimpleDateFormat("MMM").format(cal.getTime());
+                String dayNumberM3 = new SimpleDateFormat("dd").format(cal.getTime());
+                String dayM3 = new SimpleDateFormat("E").format(cal.getTime());
+                
+               
+                request.setAttribute("monthM3", monthM3);
+                request.setAttribute("jourM3", dayM3);
+                request.setAttribute("jourNbM3", dayNumberM3);
+                
+                cal.add( Calendar.DATE, -1 );
+                
+                String monthM4 = new SimpleDateFormat("MMM").format(cal.getTime());
+                String dayNumberM4 = new SimpleDateFormat("dd").format(cal.getTime());
+                String dayM4 = new SimpleDateFormat("E").format(cal.getTime());
+                
+               
+                request.setAttribute("monthM4", monthM4);
+                request.setAttribute("jourM4", dayM4);
+                request.setAttribute("jourNbM4", dayNumberM4);
+                
+            } else if (action.equals("precedent")) {
+                 
+                 forwardTo = "index.jsp?action=suivant";
+                message = "Connecté"; 
+                session = request.getSession(false);
+                login = (String) session.getAttribute("LOGIN");  
+                String currentdate = request.getParameter("currentdate");
+                
+                String[] array = currentdate.split("(?!^)");
+                    int yearNb = 0;
+                    int monthNb = 0;
+                    int dayNb = 0;
+                for (int i = 0;i<array.length;i++) {
+                    System.out.println(array[i]);
+                    yearNb = Integer.parseInt(array[0]+array[1]+array[2]+array[3]);
+                    monthNb = Integer.parseInt(array[5]+array[6]);
+                    dayNb = Integer.parseInt(array[8]+array[9]);
+                }
+                
+                monthNb = monthNb-1;
+                Calendar cal;
+                cal = new GregorianCalendar(yearNb,monthNb,dayNb);
+                cal.add( Calendar.DATE, -6 );
+                
+                Date date =  cal.getTime();    
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String dateF = sdf.format( date );
+                request.setAttribute("currentdate", dateF);
+                
+                 String month = new SimpleDateFormat("MMM").format(cal.getTime());
+                String dayNumber = new SimpleDateFormat("dd").format(cal.getTime());
+                String day = new SimpleDateFormat("E").format(cal.getTime());
+                
+                int dayInt = cal.get(Calendar.DAY_OF_WEEK); 
+                
+            
+                request.setAttribute("month", month);
+                request.setAttribute("jour", day);
+                request.setAttribute("jourNb", dayNumber); 
+                
+                cal.add( Calendar.DATE, 1 );
+                
+                String month2 = new SimpleDateFormat("MMM").format(cal.getTime());
+                String dayNumber2 = new SimpleDateFormat("dd").format(cal.getTime());
+                String day2 = new SimpleDateFormat("E").format(cal.getTime());
+                
+                
+                request.setAttribute("month2", month2);
+                request.setAttribute("jour2", day2);
+                request.setAttribute("jourNb2", dayNumber2); 
+                
+                cal.add( Calendar.DATE, 1 );
+                
+                String month3 = new SimpleDateFormat("MMM").format(cal.getTime());
+                String dayNumber3 = new SimpleDateFormat("dd").format(cal.getTime());
+                String day3 = new SimpleDateFormat("E").format(cal.getTime());
+                
+                
+                request.setAttribute("month3", month3);
+                request.setAttribute("jour3", day3);
+                request.setAttribute("jourNb3", dayNumber3); 
+                
+                cal.add( Calendar.DATE, -3 );
+                
+                String monthM2 = new SimpleDateFormat("MMM").format(cal.getTime());
+                String dayNumberM2 = new SimpleDateFormat("dd").format(cal.getTime());
+                String dayM2 = new SimpleDateFormat("E").format(cal.getTime());
+                
+                
+                request.setAttribute("monthM2", monthM2);
+                request.setAttribute("jourM2", dayM2);
+                request.setAttribute("jourNbM2", dayNumberM2); 
+                
+                cal.add( Calendar.DATE, -1 );
+                
+                String monthM3 = new SimpleDateFormat("MMM").format(cal.getTime());
+                String dayNumberM3 = new SimpleDateFormat("dd").format(cal.getTime());
+                String dayM3 = new SimpleDateFormat("E").format(cal.getTime());
+                
+               
+                request.setAttribute("monthM3", monthM3);
+                request.setAttribute("jourM3", dayM3);
+                request.setAttribute("jourNbM3", dayNumberM3);
+                
+                cal.add( Calendar.DATE, -1 );
+                
+                String monthM4 = new SimpleDateFormat("MMM").format(cal.getTime());
+                String dayNumberM4 = new SimpleDateFormat("dd").format(cal.getTime());
+                String dayM4 = new SimpleDateFormat("E").format(cal.getTime());
+                
+               
+                request.setAttribute("monthM4", monthM4);
+                request.setAttribute("jourM4", dayM4);
+                request.setAttribute("jourNbM4", dayNumberM4);
+                
+            }
+            
+            
              else {  
                 forwardTo = "index.jsp?action=todo";  
                 message = "La fonctionnalité pour le paramètre " + action + " est à implémenter !";  

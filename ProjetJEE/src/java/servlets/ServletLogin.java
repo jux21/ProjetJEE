@@ -65,7 +65,7 @@ public class ServletLogin extends HttpServlet {
                     session.setAttribute("LOGIN", login); 
                     response.sendRedirect("ServletUsers?action=connexion");
                 } else {
-                    response.sendRedirect("invalidLogin.html"); 
+                    response.sendRedirect("invalidLogin.jsp"); 
                 } 
                 
                 //soumettre les paramètres de la requête à la couche service et récupération du résultat

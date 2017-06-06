@@ -70,6 +70,13 @@ public class ServletUsers extends HttpServlet {
                     session = request.getSession(false);
                     login = (String) session.getAttribute("LOGIN");
                     Calendar cal = Calendar.getInstance();
+                    
+                    Date dateC = cal.getTime();    
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String dateF = sdf.format( dateC );
+                request.setAttribute("currentdate", dateF);
+                
+                
                     String month = new SimpleDateFormat("MMM").format(cal.getTime());
                     String dayNumber = new SimpleDateFormat("dd").format(cal.getTime());
                     String dayday = new SimpleDateFormat("E").format(cal.getTime());
