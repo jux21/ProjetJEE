@@ -9,6 +9,7 @@ import clients.gestionnaire.GestionnaireClients;
 import clients.modeles.Client;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -44,6 +45,7 @@ public class ServletAgenda extends HttpServlet {
     
     HttpSession session;
     String login;
+    
 
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods. 
@@ -53,11 +55,12 @@ public class ServletAgenda extends HttpServlet {
      * @throws IOException if an I/O error occurs 
      */  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)  
-            throws ServletException, IOException {  
+            throws ServletException, IOException, ParseException {  
         // Pratique pour décider de l'action à faire  
         String action = request.getParameter("action");  
         String forwardTo = "";  
         String message = "";
+        
         
         if (action != null) { 
             if (action.equals("connexion"))  {
@@ -209,11 +212,12 @@ public class ServletAgenda extends HttpServlet {
                     request.setAttribute("listeDesClientsSwaziTodayMoins2", liste);
                     liste = gestionnaireClients.getClientsInSwaziTodayMoins3(date);
                     request.setAttribute("listeDesClientsSwaziTodayMoins3", liste);
+                    
+                    
                 } catch (ParseException ex) {
                     Logger.getLogger(ServletAgenda.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-            }
+             } 
              else {  
                 forwardTo = "index.jsp?action=todo";  
                 message = "La fonctionnalité pour le paramètre " + action + " est à implémenter !";  
@@ -251,7 +255,11 @@ public class ServletAgenda extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(ServletAgenda.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
        
         
@@ -272,7 +280,11 @@ public class ServletAgenda extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(ServletAgenda.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

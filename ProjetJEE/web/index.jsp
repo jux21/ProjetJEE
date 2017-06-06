@@ -116,8 +116,8 @@
             <div class="agenda">
                 <div class="row suivprec">
                    
-                <a class="left">précédent</a>
-                <a class="right">suivant</a>
+                <a  class="left">Précédent</a>
+                <a class="right">Suivant</a>
                 </div>
             <div class="row jours">
               <div class="col l2 hide-on-med-and-down">
