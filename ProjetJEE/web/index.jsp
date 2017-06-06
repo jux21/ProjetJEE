@@ -157,14 +157,11 @@
                     <div class="section">
                         <h5>Simple</h5>
                         <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayMoins3']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>>  
                         </c:forEach>
                     </div>
                 </a>
@@ -172,28 +169,22 @@
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayMoins3']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>
                         </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayMoins3']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>
                         </c:forEach>
                 </div></a>
                 <div class="divider"></div>
@@ -234,14 +225,11 @@
                     <div class="section">
                         <h5>Simple</h5>
                         <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayMoins2']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>  
                         </c:forEach>
                     </div>
                 </a>
@@ -249,28 +237,22 @@
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayMoins2']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p> 
                         </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayMoins2']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>  
                         </c:forEach>
                 </div></a>
                 <div class="divider"></div>
@@ -310,42 +292,33 @@
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Simple</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayMoins1']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>  
                         </c:forEach>
                     </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayMoins1']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>  
                         </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayMoins1']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>  
                         </c:forEach>
                 </div></a>
                 <div class="divider"></div>
@@ -386,14 +359,11 @@
                     <div class="section">
                         <h5>Simple</h5>
                         <c:forEach var="u" items="${requestScope['listeDesClientsSimpleToday']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>  
                         </c:forEach>
                     </div>
                 </a>
@@ -401,28 +371,22 @@
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsZenToday']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                       <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>  
                         </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSwaziToday']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>  
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>  
                   </c:forEach>
                 </div></a>
                 <div class="divider"></div>
@@ -462,42 +426,33 @@
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Simple</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayPlus1']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>  
                         </c:forEach>
                     </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayPlus1']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>  
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>  
                   </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayPlus1']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>  
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>  
                   </c:forEach>
                 </div></a>
                 <div class="divider"></div>
@@ -537,42 +492,33 @@
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Simple</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayPlus2']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>  
                         </c:forEach>
                     </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayPlus2']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p>  
                         </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayPlus2']}">  
-                        <tr>  
-                            <td>${u.prenom}</td>  
-                            <td>${u.nom}</td></br>
-                            <td>${u.heureArrivee}</td></br>
-                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
-                            <td>${u.prix}€</td>
-                        </tr>  
+                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
+                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p> 
                         </c:forEach>
                 </div></a>
                 <div class="divider"></div>
