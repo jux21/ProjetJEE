@@ -31,10 +31,11 @@ public class Client implements Serializable {
     
     private String nom,
                    prenom,
-                   heureArrivee;
+                   heureArrivee,
+                   chambre;
     
-    @OneToMany(cascade = CascadeType.PERSIST)
-    private List<Chambre> chambres;
+    /*@OneToMany(cascade = CascadeType.PERSIST)
+    private List<Chambre> chambres;*/
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date jourArrivee,
@@ -51,7 +52,7 @@ public class Client implements Serializable {
     public Client() {
     }
 
-    public Client(String nom, String prenom, String heureArrivee, LocalDate jourArrivee, LocalDate jourDepart, boolean aPaye, boolean estArrive, float prix) {
+    public Client(String nom, String prenom, String heureArrivee, LocalDate jourArrivee, LocalDate jourDepart, boolean aPaye, boolean estArrive, float prix, String chambre) {
         this.nom = nom;
         this.prenom = prenom;
         this.heureArrivee = heureArrivee;
@@ -60,6 +61,7 @@ public class Client implements Serializable {
         this.aPaye = aPaye;
         this.estArrive = estArrive;
         this.prix = prix;
+        this.chambre = chambre;
     }
 
     public float getPrix() {
@@ -76,6 +78,14 @@ public class Client implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+    
+    public String getChambre() {
+        return chambre;
+    }
+
+    public void setChambre(String chambre) {
+        this.chambre = chambre;
     }
 
     public String getPrenom() {
@@ -126,13 +136,13 @@ public class Client implements Serializable {
         this.estArrive = estArrive;
     }
     
-    public List<Chambre> getChambres() {
+    /*public List<Chambre> getChambres() {
         return chambres;
     }
 
     public void setChambres(List<Chambre> chambres) {
         this.chambres = chambres;
-    }
+    }*/
     
     public int getId() {
         return id;

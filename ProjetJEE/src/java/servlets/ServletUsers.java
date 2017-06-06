@@ -5,6 +5,8 @@
  */
 package servlets;
 
+import clients.gestionnaire.GestionnaireClients;
+import clients.modeles.Client;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -32,11 +34,12 @@ public class ServletUsers extends HttpServlet {
     
     @EJB
     private GestionnaireUtilisateurs gestionnaireUtilisateurs;
+    @EJB
+    private GestionnaireClients gestionnaireClients;
     
     HttpSession session;
     String login;
-    
-    boolean firstAccess = true;
+
 
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods. 
@@ -58,8 +61,7 @@ public class ServletUsers extends HttpServlet {
             
             
             if (action.equals("connexion"))  {
-                forwardTo = "index.jsp?action=connexion";
-                message = "Connecté"; 
+                 
                 session = request.getSession(false);
                 login = (String) session.getAttribute("LOGIN");  
                 Calendar cal = Calendar.getInstance();
@@ -145,14 +147,50 @@ public class ServletUsers extends HttpServlet {
                 request.setAttribute("jourNbM4", dayNumberM4);
                 
                 
-                // On demande au ServeltClients de récupérer les clients actuellement dans les chambres
+                // On récupère les clients actuellement dans les chambres et les jours précédents et suivants
+                Collection<Client> liste = gestionnaireClients.getClientsInSimpleToday();  
+                request.setAttribute("listeDesClientsSimpleToday", liste); 
+                liste = gestionnaireClients.getClientsInSimpleTodayPlus1();  
+                request.setAttribute("listeDesClientsSimpleTodayPlus1", liste);
+                liste = gestionnaireClients.getClientsInSimpleTodayPlus2();   
+                request.setAttribute("listeDesClientsSimpleTodayPlus2", liste);
+                liste = gestionnaireClients.getClientsInSimpleTodayMoins1();   
+                request.setAttribute("listeDesClientsSimpleTodayMoins1", liste);
+                liste = gestionnaireClients.getClientsInSimpleTodayMoins2();   
+                request.setAttribute("listeDesClientsSimpleTodayMoins2", liste);
+                liste = gestionnaireClients.getClientsInSimpleTodayMoins3();   
+                request.setAttribute("listeDesClientsSimpleTodayMoins3", liste);
                 
-                if(firstAccess)
-                {
-                    firstAccess = false;
-                    response.sendRedirect(request.getContextPath()+"/ServletClients?action=listerClients");
-                    return;
-                }
+                liste = gestionnaireClients.getClientsInZenToday();  
+                request.setAttribute("listeDesClientsZenToday", liste); 
+                liste = gestionnaireClients.getClientsInZenTodayPlus1();  
+                request.setAttribute("listeDesClientsZenTodayPlus1", liste);
+                liste = gestionnaireClients.getClientsInZenTodayPlus2();   
+                request.setAttribute("listeDesClientsZenTodayPlus2", liste);
+                liste = gestionnaireClients.getClientsInZenTodayMoins1();   
+                request.setAttribute("listeDesClientsZenTodayMoins1", liste);
+                liste = gestionnaireClients.getClientsInZenTodayMoins2();   
+                request.setAttribute("listeDesClientsZenTodayMoins2", liste);
+                liste = gestionnaireClients.getClientsInZenTodayMoins3();   
+                request.setAttribute("listeDesClientsZenTodayMoins3", liste);
+                
+                liste = gestionnaireClients.getClientsInSwaziToday();  
+                request.setAttribute("listeDesClientsSwaziToday", liste); 
+                liste = gestionnaireClients.getClientsInSwaziTodayPlus1();  
+                request.setAttribute("listeDesClientsSwaziTodayPlus1", liste);
+                liste = gestionnaireClients.getClientsInSwaziTodayPlus2();   
+                request.setAttribute("listeDesClientsSwaziTodayPlus2", liste);
+                liste = gestionnaireClients.getClientsInSwaziTodayMoins1();   
+                request.setAttribute("listeDesClientsSwaziTodayMoins1", liste);
+                liste = gestionnaireClients.getClientsInSwaziTodayMoins2();   
+                request.setAttribute("listeDesClientsSwaziTodayMoins2", liste);
+                liste = gestionnaireClients.getClientsInSwaziTodayMoins3();   
+                request.setAttribute("listeDesClientsSwaziTodayMoins3", liste);
+                
+                
+                forwardTo = "index.jsp?action=connexion";
+                message = "Connecté";
+                
                   
                 
              }  else if (action.equals("newResa")) {

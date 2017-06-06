@@ -12,6 +12,8 @@
   
 <!-- Ne pas oublier cette ligne sinon tous les tags de la JSTL seront ignorés ! -->  
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <html>  
     <head>  
@@ -142,27 +144,57 @@
          </div>
            <div class="row">
 
-               
+              
+          
           <div class="col l2 m3 s12">
             <!-- Promo Content 1 goes here -->
             <div class="divider"></div>
-                <a class="waves-effect waves-teal btn"><div class="section">
-                  <h5>Simple</h5>
-                  <p>Maria Sharapova<br> 9h - 21/05 - 25/05<br>65€</p>
-                    </div></a>
+                <a class="waves-effect waves-teal btn">
+                    <div class="section">
+                        <h5>Simple</h5>
+                        <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayMoins3']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                        </c:forEach>
+                    </div>
+                </a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
-                  <p></p>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayMoins3']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                        </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
-                  <p></p>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayMoins3']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                        </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 
-                  <h5>Dor3</h5>
+                  <!--<h5>Dor3</h5>
                   
                   <a class="waves-effect waves-teal btn"><div class="section">
                           <h6>Lit 1</h6>
@@ -187,30 +219,59 @@
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
                                           <h6>Lit 4</h6>
-                  <p></p></div></a>
+                  <p></p></div></a>-->
                 </div>
           
          
-          <div class="col l2 m3 hide-on-small-only">
+          <div class="col l2 m3 s12">
             <!-- Promo Content 1 goes here -->
             <div class="divider"></div>
-                <a class="waves-effect waves-teal btn"><div class="section">
-                  <h5>Simple</h5>
-                  <p>Maria Sharapova<br> 9h - 21/05 - 25/05<br>65€</p>
-                    </div></a>
+                <a class="waves-effect waves-teal btn">
+                    <div class="section">
+                        <h5>Simple</h5>
+                        <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayMoins2']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                        </c:forEach>
+                    </div>
+                </a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
-                  <p></p>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayMoins2']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                        </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
-                  <p></p>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayMoins2']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                        </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 
-                  <h5>Dor3</h5>
+                  <!--<h5>Dor3</h5>
                   
                   <a class="waves-effect waves-teal btn"><div class="section">
                           <h6>Lit 1</h6>
@@ -235,7 +296,7 @@
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
                                           <h6>Lit 4</h6>
-                  <p></p></div></a>
+                  <p></p></div></a>-->
                 </div>
           
           
@@ -244,21 +305,48 @@
             <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Simple</h5>
-                  <p>Maria Sharapova<br> 9h - 21/05 - 25/05<br>65€</p>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayMoins1']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                        </c:forEach>
                     </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
-                  <p></p>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayMoins1']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                        </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
-                  <p></p>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayMoins1']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                        </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 
-                  <h5>Dor3</h5>
+                  <!--<h5>Dor3</h5>
                   
                   <a class="waves-effect waves-teal btn"><div class="section">
                           <h6>Lit 1</h6>
@@ -283,29 +371,134 @@
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
                                           <h6>Lit 4</h6>
+                  <p></p></div></a>>-->
+               </div>
+                  
+          
+               <div class="col l2 hide-on-med-and-down">
+            <!-- Promo Content 1 goes here -->
+            <div class="divider"></div>
+                <a class="waves-effect waves-teal btn">
+                    <div class="section">
+                        <h5>Simple</h5>
+                        <c:forEach var="u" items="${requestScope['listeDesClientsSimpleToday']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                        </c:forEach>
+                    </div>
+                </a>
+                <div class="divider"></div>
+                <a class="waves-effect waves-teal btn"><div class="section">
+                  <h5>Zen</h5>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsZenToday']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                 </c:forEach>
+                </div></a>
+                <div class="divider"></div>
+                <a class="waves-effect waves-teal btn"><div class="section">
+                  <h5>Swazi</h5>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsSwaziToday']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>  
+                        </tr>  
+                  </c:forEach>
+                </div></a>
+                <div class="divider"></div>
+                
+                  <!--<h5>Dor3</h5>
+                  
+                  <a class="waves-effect waves-teal btn"><div class="section">
+                          <h6>Lit 1</h6>
                   <p></p></div></a>
-                </div>
+				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 2</h6>
+                  <p></p></div></a>
+				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 3</h6>
+                  <p></p></div></a>
+                <div class="divider"></div>
+                
+                  <h5>Dor4</h5>
+				  <a class="waves-effect waves-teal btn"><div class="section">
+                          <h6>Lit 1</h6>
+                  <p></p></div></a>
+				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 2</h6>
+                  <p></p></div></a>
+				  <a class="waves-effect waves-teal btn"><div class="section">
+                                           <h6>Lit 3</h6>
+                  <p></p></div></a>
+				  <a class="waves-effect waves-teal btn"><div class="section">
+                                          <h6>Lit 4</h6>
+                  <p></p></div></a>>-->
+               </div>
+          
           
                <div class="col l2 hide-on-med-and-down">
             <!-- Promo Content 1 goes here -->
             <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Simple</h5>
-                  <p>Maria Sharapova<br> 9h - 21/05 - 25/05<br>65€</p>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayPlus1']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                        </c:forEach>
                     </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
-                  <p></p>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayPlus1']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>  
+                        </tr>  
+                  </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
-                  <p></p>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayPlus1']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>  
+                        </tr>  
+                  </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 
-                  <h5>Dor3</h5>
+                  <!--<h5>Dor3</h5>
                   
                   <a class="waves-effect waves-teal btn"><div class="section">
                           <h6>Lit 1</h6>
@@ -330,56 +523,8 @@
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
                                           <h6>Lit 4</h6>
-                  <p></p></div></a>
-                </div>
-          
-          
-               <div class="col l2 hide-on-med-and-down">
-            <!-- Promo Content 1 goes here -->
-            <div class="divider"></div>
-                <a class="waves-effect waves-teal btn"><div class="section">
-                  <h5>Simple</h5>
-                  <p>Maria Sharapova<br> 9h - 21/05 - 25/05<br>65€</p>
-                    </div></a>
-                <div class="divider"></div>
-                <a class="waves-effect waves-teal btn"><div class="section">
-                  <h5>Zen</h5>
-                  <p></p>
-                </div></a>
-                <div class="divider"></div>
-                <a class="waves-effect waves-teal btn"><div class="section">
-                  <h5>Swazi</h5>
-                  <p></p>
-                </div></a>
-                <div class="divider"></div>
-                
-                  <h5>Dor3</h5>
-                  
-                  <a class="waves-effect waves-teal btn"><div class="section">
-                          <h6>Lit 1</h6>
-                  <p></p></div></a>
-				  <a class="waves-effect waves-teal btn"><div class="section">
-                                           <h6>Lit 2</h6>
-                  <p></p></div></a>
-				  <a class="waves-effect waves-teal btn"><div class="section">
-                                           <h6>Lit 3</h6>
-                  <p></p></div></a>
-                <div class="divider"></div>
-                
-                  <h5>Dor4</h5>
-				  <a class="waves-effect waves-teal btn"><div class="section">
-                          <h6>Lit 1</h6>
-                  <p></p></div></a>
-				  <a class="waves-effect waves-teal btn"><div class="section">
-                                           <h6>Lit 2</h6>
-                  <p></p></div></a>
-				  <a class="waves-effect waves-teal btn"><div class="section">
-                                           <h6>Lit 3</h6>
-                  <p></p></div></a>
-				  <a class="waves-effect waves-teal btn"><div class="section">
-                                          <h6>Lit 4</h6>
-                  <p></p></div></a>
-                </div>
+                  <p></p></div></a>>-->
+               </div>
           
       
                <div class="col l2 hide-on-med-and-down">
@@ -387,21 +532,48 @@
            <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Simple</h5>
-                  <p>Maria Sharapova<br> 9h - 21/05 - 25/05<br>65€</p>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayPlus2']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                        </c:forEach>
                     </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
-                  <p></p>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayPlus2']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                        </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
-                  <p></p>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayPlus2']}">  
+                        <tr>  
+                            <td>${u.prenom}</td>  
+                            <td>${u.nom}</td></br>
+                            <td>${u.heureArrivee}</td></br>
+                            <td>du <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>au <fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/></td><br>
+                            <td>${u.prix}€</td>
+                        </tr>  
+                        </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 
-                  <h5>Dor3</h5>
+                  <!--<h5>Dor3</h5>
                   
                   <a class="waves-effect waves-teal btn"><div class="section">
                           <h6>Lit 1</h6>
@@ -426,7 +598,7 @@
                   <p></p></div></a>
 				  <a class="waves-effect waves-teal btn"><div class="section">
                                           <h6>Lit 4</h6>
-                  <p></p></div></a>
+                  <p></p></div></a>>-->
                 </div>
           
          

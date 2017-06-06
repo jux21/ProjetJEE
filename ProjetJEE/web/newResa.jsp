@@ -7,6 +7,10 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
+          <input id="chambre" name="chambre" type="text" class="validate">
+          <label for="chambre">Chambre</label>
+        </div>
+        <div class="input-field col s12">
           <input id="first_name" name="first_name" type="text" class="validate">
           <label for="first_name">First Name</label>
         </div>
