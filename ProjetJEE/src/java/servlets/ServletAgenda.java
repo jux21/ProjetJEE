@@ -229,13 +229,15 @@ public class ServletAgenda extends HttpServlet {
              
              } else if (action.equals("suivant")) {
                  
+                 try {
+                 
                  forwardTo = "index.jsp?action=suivant";
                 message = "Connecté"; 
                 session = request.getSession(false);
                 login = (String) session.getAttribute("LOGIN");  
-                String currentdate = request.getParameter("currentdate");
+                String dateG = request.getParameter("currentdate");
                 
-                String[] array = currentdate.split("(?!^)");
+                String[] array = dateG.split("(?!^)");
                     int yearNb = 0;
                     int monthNb = 0;
                     int dayNb = 0;
@@ -251,10 +253,10 @@ public class ServletAgenda extends HttpServlet {
                 cal = new GregorianCalendar(yearNb,monthNb,dayNb);
                 cal.add( Calendar.DATE, 6 );
                 
-                Date date =  cal.getTime();    
+                Date dateC =  cal.getTime();    
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                String dateF = sdf.format( date );
-                request.setAttribute("currentdate", dateF);
+                String date = sdf.format( dateC );
+                request.setAttribute("currentdate", date);
                 
                  String month = new SimpleDateFormat("MMM").format(cal.getTime());
                 String dayNumber = new SimpleDateFormat("dd").format(cal.getTime());
@@ -322,15 +324,62 @@ public class ServletAgenda extends HttpServlet {
                 request.setAttribute("jourM4", dayM4);
                 request.setAttribute("jourNbM4", dayNumberM4);
                 
+                 // On récupère les clients dans les chambres les jours précédents et suivants en fonction de la date choisie
+                    Collection<Client> liste = gestionnaireClients.getClientsInSimpleToday(date);
+                    request.setAttribute("listeDesClientsSimpleToday", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayPlus1(date);
+                    request.setAttribute("listeDesClientsSimpleTodayPlus1", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayPlus2(date);
+                    request.setAttribute("listeDesClientsSimpleTodayPlus2", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayMoins1(date);
+                    request.setAttribute("listeDesClientsSimpleTodayMoins1", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayMoins2(date);
+                    request.setAttribute("listeDesClientsSimpleTodayMoins2", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayMoins3(date);
+                    request.setAttribute("listeDesClientsSimpleTodayMoins3", liste);
+                    
+                    liste = gestionnaireClients.getClientsInZenToday(date);
+                    request.setAttribute("listeDesClientsZenToday", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayPlus1(date);
+                    request.setAttribute("listeDesClientsZenTodayPlus1", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayPlus2(date);
+                    request.setAttribute("listeDesClientsZenTodayPlus2", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayMoins1(date);
+                    request.setAttribute("listeDesClientsZenTodayMoins1", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayMoins2(date);
+                    request.setAttribute("listeDesClientsZenTodayMoins2", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayMoins3(date);
+                    request.setAttribute("listeDesClientsZenTodayMoins3", liste);
+                    
+                    liste = gestionnaireClients.getClientsInSwaziToday(date);
+                    request.setAttribute("listeDesClientsSwaziToday", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayPlus1(date);
+                    request.setAttribute("listeDesClientsSwaziTodayPlus1", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayPlus2(date);
+                    request.setAttribute("listeDesClientsSwaziTodayPlus2", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayMoins1(date);
+                    request.setAttribute("listeDesClientsSwaziTodayMoins1", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayMoins2(date);
+                    request.setAttribute("listeDesClientsSwaziTodayMoins2", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayMoins3(date);
+                    request.setAttribute("listeDesClientsSwaziTodayMoins3", liste);
+                    
+                    
+                } catch (ParseException ex) {
+                    Logger.getLogger(ServletAgenda.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             } else if (action.equals("precedent")) {
+                 
+                try {
                  
                  forwardTo = "index.jsp?action=suivant";
                 message = "Connecté"; 
                 session = request.getSession(false);
                 login = (String) session.getAttribute("LOGIN");  
-                String currentdate = request.getParameter("currentdate");
+                String dateG = request.getParameter("currentdate");
                 
-                String[] array = currentdate.split("(?!^)");
+                String[] array = dateG.split("(?!^)");
                     int yearNb = 0;
                     int monthNb = 0;
                     int dayNb = 0;
@@ -346,10 +395,10 @@ public class ServletAgenda extends HttpServlet {
                 cal = new GregorianCalendar(yearNb,monthNb,dayNb);
                 cal.add( Calendar.DATE, -6 );
                 
-                Date date =  cal.getTime();    
+                Date dateC =  cal.getTime();    
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                String dateF = sdf.format( date );
-                request.setAttribute("currentdate", dateF);
+                String date = sdf.format( dateC );
+                request.setAttribute("currentdate", date);
                 
                  String month = new SimpleDateFormat("MMM").format(cal.getTime());
                 String dayNumber = new SimpleDateFormat("dd").format(cal.getTime());
@@ -417,10 +466,53 @@ public class ServletAgenda extends HttpServlet {
                 request.setAttribute("jourM4", dayM4);
                 request.setAttribute("jourNbM4", dayNumberM4);
                 
-            }
+                 // On récupère les clients dans les chambres les jours précédents et suivants en fonction de la date choisie
+                    Collection<Client> liste = gestionnaireClients.getClientsInSimpleToday(date);
+                    request.setAttribute("listeDesClientsSimpleToday", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayPlus1(date);
+                    request.setAttribute("listeDesClientsSimpleTodayPlus1", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayPlus2(date);
+                    request.setAttribute("listeDesClientsSimpleTodayPlus2", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayMoins1(date);
+                    request.setAttribute("listeDesClientsSimpleTodayMoins1", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayMoins2(date);
+                    request.setAttribute("listeDesClientsSimpleTodayMoins2", liste);
+                    liste = gestionnaireClients.getClientsInSimpleTodayMoins3(date);
+                    request.setAttribute("listeDesClientsSimpleTodayMoins3", liste);
+                    
+                    liste = gestionnaireClients.getClientsInZenToday(date);
+                    request.setAttribute("listeDesClientsZenToday", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayPlus1(date);
+                    request.setAttribute("listeDesClientsZenTodayPlus1", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayPlus2(date);
+                    request.setAttribute("listeDesClientsZenTodayPlus2", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayMoins1(date);
+                    request.setAttribute("listeDesClientsZenTodayMoins1", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayMoins2(date);
+                    request.setAttribute("listeDesClientsZenTodayMoins2", liste);
+                    liste = gestionnaireClients.getClientsInZenTodayMoins3(date);
+                    request.setAttribute("listeDesClientsZenTodayMoins3", liste);
+                    
+                    liste = gestionnaireClients.getClientsInSwaziToday(date);
+                    request.setAttribute("listeDesClientsSwaziToday", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayPlus1(date);
+                    request.setAttribute("listeDesClientsSwaziTodayPlus1", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayPlus2(date);
+                    request.setAttribute("listeDesClientsSwaziTodayPlus2", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayMoins1(date);
+                    request.setAttribute("listeDesClientsSwaziTodayMoins1", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayMoins2(date);
+                    request.setAttribute("listeDesClientsSwaziTodayMoins2", liste);
+                    liste = gestionnaireClients.getClientsInSwaziTodayMoins3(date);
+                    request.setAttribute("listeDesClientsSwaziTodayMoins3", liste);
+                    
+                    
+                } catch (ParseException ex) {
+                    Logger.getLogger(ServletAgenda.class.getName()).log(Level.SEVERE, null, ex);
+                }
             
             
-             else {  
+            } else {  
                 forwardTo = "index.jsp?action=todo";  
                 message = "La fonctionnalité pour le paramètre " + action + " est à implémenter !";  
             }  

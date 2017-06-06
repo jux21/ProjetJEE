@@ -82,7 +82,7 @@
               <jsp:include page="newResa.jsp"/> 
          </c:if>
         
-             <c:if test="${(param['action'] == 'connexion') || (param['action'] == 'datepicker')}">
+             <c:if test="${(param['action'] == 'connexion') || (param['action'] == 'datepicker') || (param['action'] == 'suivant')}">
         
      
         
