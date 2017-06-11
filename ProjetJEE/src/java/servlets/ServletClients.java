@@ -108,6 +108,47 @@ public class ServletClients extends HttpServlet {
                 forwardTo = "ServletUsers?action=newResa"; 
                 message = "Insertion d'un client";
                 
+            } else if (action.equals("listerClients")) {
+                // On récupère la liste des clients actuellement présent dans la maison d'hote 
+                forwardTo = "ServletUsers?action=connexion"; 
+                message = "Liste des clients";
+
+            } else if (action.equals("insererClient2")) { 
+                
+                // Transformation des String en Date
+                String stringJourArrivee = request.getParameter("jourA");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.FRANCE);
+                LocalDate dateJourArrivee = LocalDate.parse(stringJourArrivee, formatter);
+                
+                String stringJourDepart = request.getParameter("jourD");
+                LocalDate dateJourDepart = LocalDate.parse(stringJourDepart, formatter);
+                
+                // Transformation des String en Boolean
+                Boolean aPaye = false,
+                        estArrive = false;
+                
+                if (request.getParameterMap().containsKey("apaye"))
+                {
+                    if(request.getParameter("apaye").matches("on"))
+                    {
+                        aPaye = true;
+                    }
+                   
+                }
+                
+                if (request.getParameterMap().containsKey("estarrive"))
+                {
+                    if(request.getParameter("estarrive").matches("on"))
+                    {
+                        estArrive = true;
+                    }
+                }
+                
+                
+                gestionnaireClients.updateClient(request.getParameter("last_name"), request.getParameter("first_name"), request.getParameter("heureA"), dateJourArrivee, dateJourDepart, aPaye, estArrive, Float.valueOf(request.getParameter("prix")),request.getParameter("chambre")); 
+                forwardTo = "ServletUsers?action=newResa"; 
+                message = "Insertion d'un client";
+                
             } else if (action.equals("modifierClient")) {
                 /*gestionnaireClients.updateClient(); 
                 Collection<Client> liste = gestionnaireClients.getClientsCurrentlyInHouse(); 

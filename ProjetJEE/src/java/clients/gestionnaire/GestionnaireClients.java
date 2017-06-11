@@ -298,4 +298,10 @@ public class GestionnaireClients {
         return q.getResultList();
     }
    
+   public int updateClient(String nom, String prenom, String heureArrivee, LocalDate jourArrivee, LocalDate jourDepart, boolean aPaye, boolean estArrive, float prix, String chambre) {
+        // Exécution d'une requête équivalente à un update where login    
+        Query q = em.createQuery("UPDATE Client c SET c.lastname = '"+nom+"', c.firstname = '"+prenom+"' WHERE c.chambre = '"+chambre+"'");
+        return q.executeUpdate();
+    }
+   
 }

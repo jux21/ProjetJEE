@@ -162,45 +162,306 @@ public class ServletUsers extends HttpServlet {
                     // On récupère les clients actuellement dans les chambres et les jours précédents et suivants
                     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                     Date date = new Date();
-                    System.out.println("cacacacaacccacacacacac "+dateFormat.format(date));
+                    String estArrive  = null;
+                    String aPaye = null;
+                    Client client = null;
+       
                     Collection<Client> liste = gestionnaireClients.getClientsInSimpleToday(dateFormat.format(date));
+                    if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    
+                    request.setAttribute("apayeSimpleToday", aPaye);
+                    request.setAttribute("estarriveSimpleToday", estArrive);}
                     request.setAttribute("listeDesClientsSimpleToday", liste);
                     liste = gestionnaireClients.getClientsInSimpleTodayPlus1(dateFormat.format(date));
+                     if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeSimpleTodayPlus1", aPaye);
+                    request.setAttribute("estarriveSimpleTodayPlus1", estArrive);}
                     request.setAttribute("listeDesClientsSimpleTodayPlus1", liste);
                     liste = gestionnaireClients.getClientsInSimpleTodayPlus2(dateFormat.format(date));
+                     if (!liste.isEmpty()) {
+                     client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeSimpleTodayPlus2", aPaye);
+                    request.setAttribute("estarriveSimpleTodayPlus2", estArrive);}
+                    
                     request.setAttribute("listeDesClientsSimpleTodayPlus2", liste);
                     liste = gestionnaireClients.getClientsInSimpleTodayMoins1(dateFormat.format(date));
+                     if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeSimpleTodayMoins1", aPaye);
+                    request.setAttribute("estarriveSimpleTodayMoins1", estArrive);}
                     request.setAttribute("listeDesClientsSimpleTodayMoins1", liste);
                     liste = gestionnaireClients.getClientsInSimpleTodayMoins2(dateFormat.format(date));
+                     if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeSimpleTodayMoins2", aPaye);
+                    request.setAttribute("estarriveSimpleTodayMoins2", estArrive);}
                     request.setAttribute("listeDesClientsSimpleTodayMoins2", liste);
                     liste = gestionnaireClients.getClientsInSimpleTodayMoins3(dateFormat.format(date));
+                     if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeSimpleTodayMoins3", aPaye);
+                    request.setAttribute("estarriveSimpleTodayMoins3", estArrive);}
                     request.setAttribute("listeDesClientsSimpleTodayMoins3", liste);
                     
                     liste = gestionnaireClients.getClientsInZenToday(dateFormat.format(date));
+                     if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeZenToday", aPaye);
+                    request.setAttribute("estarriveZenToday", estArrive);}
                     request.setAttribute("listeDesClientsZenToday", liste);
                     liste = gestionnaireClients.getClientsInZenTodayPlus1(dateFormat.format(date));
+                     if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeZenTodayPlus1", aPaye);
+                    request.setAttribute("estarriveZenTodayPlus1", estArrive);}
                     request.setAttribute("listeDesClientsZenTodayPlus1", liste);
                     liste = gestionnaireClients.getClientsInZenTodayPlus2(dateFormat.format(date));
+                     if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeZenTodayPlus2", aPaye);
+                    request.setAttribute("estarriveZenTodayPlus2", estArrive);}
                     request.setAttribute("listeDesClientsZenTodayPlus2", liste);
                     liste = gestionnaireClients.getClientsInZenTodayMoins1(dateFormat.format(date));
+                     if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeZenTodayMoins1", aPaye);
+                    request.setAttribute("estarriveZenTodayMoins1", estArrive);}
                     request.setAttribute("listeDesClientsZenTodayMoins1", liste);
                     liste = gestionnaireClients.getClientsInZenTodayMoins2(dateFormat.format(date));
+                    if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeZenTodayMoins2", aPaye);
+                    request.setAttribute("estarriveZenTodayMoins2", estArrive);}
                     request.setAttribute("listeDesClientsZenTodayMoins2", liste);
                     liste = gestionnaireClients.getClientsInZenTodayMoins3(dateFormat.format(date));
+                     if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeZenTodayMoins3", aPaye);
+                    request.setAttribute("estarriveZenTodayMoins3", estArrive);}
                     request.setAttribute("listeDesClientsZenTodayMoins3", liste);
                     
                     liste = gestionnaireClients.getClientsInSwaziToday(dateFormat.format(date));
+                    if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeSwazyToday", aPaye);
+                    request.setAttribute("estarriveSwazyToday", estArrive);}
                     request.setAttribute("listeDesClientsSwaziToday", liste);
+                    
                     liste = gestionnaireClients.getClientsInSwaziTodayPlus1(dateFormat.format(date));
+                    if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeSwazyTodayPlus1", aPaye);
+                    request.setAttribute("estarriveSwazyTodayPlus1", estArrive);}
                     request.setAttribute("listeDesClientsSwaziTodayPlus1", liste);
+                    
                     liste = gestionnaireClients.getClientsInSwaziTodayPlus2(dateFormat.format(date));
+                    if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeSwazyTodayPlus2", aPaye);
+                    request.setAttribute("estarriveSwazyTodayPlus2", estArrive);}
                     request.setAttribute("listeDesClientsSwaziTodayPlus2", liste);
                     liste = gestionnaireClients.getClientsInSwaziTodayMoins1(dateFormat.format(date));
+                    if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeSwazyTodayMoins1", aPaye);
+                    request.setAttribute("estarriveSwazyTodayMoins1", estArrive);}
                     request.setAttribute("listeDesClientsSwaziTodayMoins1", liste);
                     liste = gestionnaireClients.getClientsInSwaziTodayMoins2(dateFormat.format(date));
+                    if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeSwazyTodayMoins2", aPaye);
+                    request.setAttribute("estarriveSwazyTodayMoins2", estArrive);}
                     request.setAttribute("listeDesClientsSwaziTodayMoins2", liste);
                     liste = gestionnaireClients.getClientsInSwaziTodayMoins3(dateFormat.format(date));
+                    if (!liste.isEmpty()) {
+                    client = liste.iterator().next();
+                    if (client.isEstArrive()== true) {
+                        estArrive = "checked";
+                    } else {
+                        estArrive = "off";
+                    }
+                    if (client.isaPaye()== true) {
+                        aPaye = "checked";
+                    } else {
+                        aPaye = "off";
+                    }
+                    request.setAttribute("apayeSwazyTodayMoins3", aPaye);
+                    request.setAttribute("estarriveSwazyTodayMoins3", estArrive);}
                     request.setAttribute("listeDesClientsSwaziTodayMoins3", liste);
+                    
+                   // request.setAttribute("listeDesClientsSwaziTodayMoins3", liste['apaye']);
                     
                     
                     forwardTo = "index.jsp?action=connexion";
@@ -214,8 +475,32 @@ public class ServletUsers extends HttpServlet {
              }  else if (action.equals("newResa")) {
                 request.setAttribute("newResa", "newResa");  
                 forwardTo = "index.jsp?action=newResa"; 
-                message = "Liste des utilisateurs"; 
+                message = "Ajouter un hôte"; 
 
+            } else if (action.equals("newResa2")) {
+                request.setAttribute("newResa2", "newResa2");
+                String stringJourArrivee = request.getParameter("jourA");
+                String stringJourDepart = request.getParameter("jourD");
+                String apaye = request.getParameter("apaye");
+                String estarrive = request.getParameter("estarrive");
+                String nameL = request.getParameter("last_name");
+                String nameF = request.getParameter("first_name");
+                String heureA = request.getParameter("heureA");
+                String prix = request.getParameter("prix");
+                String chambre = request.getParameter("chambre");
+                forwardTo = "index.jsp?action=newResa2"; 
+                message = "Liste des utilisateurs"; 
+                
+                request.setAttribute("jourA", stringJourArrivee);
+                request.setAttribute("jourD", stringJourDepart);
+                request.setAttribute("apaye", apaye);
+                request.setAttribute("estarrive", estarrive);
+                request.setAttribute("nom", nameL);
+                request.setAttribute("prenom", nameF);
+                request.setAttribute("heureA", heureA);
+                request.setAttribute("prix", prix);
+                request.setAttribute("chambre", chambre);
+                
             }
            
                 

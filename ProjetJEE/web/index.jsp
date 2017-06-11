@@ -82,6 +82,11 @@
               <jsp:include page="newResa.jsp"/> 
          </c:if>
         
+                 
+                 <c:if test="${param['action'] == 'newResa2'}">
+              <jsp:include page="newResa2.jsp"/> 
+         </c:if>
+                 
              <c:if test="${(param['action'] == 'connexion') || (param['action'] == 'datepicker') || (param['action'] == 'suivant')}">
         
      
@@ -153,40 +158,78 @@
           <div class="col l2 m3 s12">
             <!-- Promo Content 1 goes here -->
             <div class="divider"></div>
-                <a class="waves-effect waves-teal btn">
+            <c:if test="${empty requestScope['listeDesClientsSimpleTodayMoins3']}">
+                 <a class="waves-effect waves-teal btn">
                     <div class="section">
                         <h5>Simple</h5>
-                        <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayMoins3']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
-                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
-                            </br> ${u.prix}€</td>
-                        </p>>  
-                        </c:forEach>
+                        <p></p>
                     </div>
                 </a>
+            </c:if>
+            <c:set var="estarriveSimpleTodayMoins3" value="${requestScope['estarriveSimpleTodayMoins3']}"/>
+        <c:set var="apayeSimpleTodayMoins3" value="${requestScope['apayeSimpleTodayMoins3']}"/>
+            <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayMoins3']}">
+                <a href="ServletUsers?chambre=simple&first_name=${u.prenom}&last_name=${u.nom}&heureA=${u.heureArrivee}&jourA=<fmt:formatDate value="${u.jourArrivee}" pattern="yyyy-MM-dd"/>&jourD=<fmt:formatDate value="${u.jourDepart}" pattern="yyyy-MM-dd"/>&prix=${u.prix}&estArrive=${estarriveSimpleTodayMoins3}&aPaye=${apayeSimpleTodayMoins3}&action=newResa2" class="waves-effect waves-teal btn">
+                    <div class="section">
+                        <h5>Simple</h5>
+                          
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                            </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
+                            </br> ${u.prix}€</td>
+                        </p> 
+                        
+                    </div>
+                </a>
+                        </c:forEach>
                 <div class="divider"></div>
-                <a class="waves-effect waves-teal btn"><div class="section">
-                  <h5>Zen</h5>
+                <c:if test="${empty requestScope['listeDesClientsZenTodayMoins3']}">
+                 <a class="waves-effect waves-teal btn">
+                    <div class="section">
+                        <h5>Zen</h5>
+                        <p></p>
+                    </div>
+                </a>
+            </c:if>
+                             <c:set var="estarriveZenTodayMoins3" value="${requestScope['estarriveZenTodayMoins3']}"/>
+        <c:set var="apayeZenTodayMoins3" value="${requestScope['apayeZenTodayMoins3']}"/>
                   <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayMoins3']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                <a href="ServletUsers?chambre=simple&first_name=${u.prenom}&last_name=${u.nom}&heureA=${u.heureArrivee}&jourA=<fmt:formatDate value="${u.jourArrivee}" pattern="yyyy-MM-dd"/>&jourD=<fmt:formatDate value="${u.jourDepart}" pattern="yyyy-MM-dd"/>&prix=${u.prix}&estArrive=${estarriveZenTodayMoins3}&aPaye=${apayeZenTodayMoins3}&action=newResa2" class="waves-effect waves-teal btn">
+                  <div class="section">
+                  <h5>Zen</h5>
+      
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
-                        </p>
-                        </c:forEach>
-                </div></a>
+                        </p> 
+                        
+                </div></a></c:forEach>
                 <div class="divider"></div>
-                <a class="waves-effect waves-teal btn"><div class="section">
-                  <h5>Swazi</h5>
+                
+                <c:if test="${empty requestScope['listeDesClientsSwazyTodayMoins3']}">
+                 <a class="waves-effect waves-teal btn">
+                    <div class="section">
+                        <h5>Swazy</h5>
+                        <p></p>
+                    </div>
+                </a>
+            </c:if>
+                  <c:set var="estarriveSwazyTodayMoins3" value="${requestScope['estarriveSwazyTodayMoins3']}"/>
+        <c:set var="apayeSwazyTodayMoins3" value="${requestScope['apayeSwazyTodayMoins3']}"/>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayMoins3']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                <a href="ServletUsers?chambre=simple&first_name=${u.prenom}&last_name=${u.nom}&heureA=${u.heureArrivee}&jourA=<fmt:formatDate value="${u.jourArrivee}" pattern="yyyy-MM-dd"/>&jourD=<fmt:formatDate value="${u.jourDepart}" pattern="yyyy-MM-dd"/>&prix=${u.prix}&estArrive=${estarriveSwazyTodayMoins3}&aPaye=${apayeSwazyTodayMoins3}&action=newResa2" class="waves-effect waves-teal btn">
+                 <div class="section">
+                    <h5>Swazi</h5>
+                 
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
-                        </p>
-                        </c:forEach>
+                        </p> 
+                        
                 </div></a>
+                        </c:forEach>
                 <div class="divider"></div>
                 
                   <!--<h5>Dor3</h5>
@@ -225,8 +268,8 @@
                     <div class="section">
                         <h5>Simple</h5>
                         <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayMoins2']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
                         </p>  
@@ -237,22 +280,22 @@
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayMoins2']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
-                        </p> 
+                        </p>  
                         </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayMoins2']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
-                        </p>  
+                        </p> 
                         </c:forEach>
                 </div></a>
                 <div class="divider"></div>
@@ -292,33 +335,33 @@
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Simple</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayMoins1']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
-                        </p>  
+                        </p>   
                         </c:forEach>
                     </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayMoins1']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                       <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
-                        </p>  
+                        </p>   
                         </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayMoins1']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
-                        </p>  
+                        </p> 
                         </c:forEach>
                 </div></a>
                 <div class="divider"></div>
@@ -358,9 +401,13 @@
                 <a class="waves-effect waves-teal btn">
                     <div class="section">
                         <h5>Simple</h5>
+                        <c:set var="estarrive" value="${requestScope['estarrive']}"/>
+                        <c:set var="apaye" value="${requestScope['apaye']}"/>
                         <c:forEach var="u" items="${requestScope['listeDesClientsSimpleToday']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                        
+                            
+                            <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
                         </p>  
@@ -371,8 +418,8 @@
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsZenToday']}">  
-                       <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                       <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
                         </p>  
@@ -382,11 +429,11 @@
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSwaziToday']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
-                        </p>  
+                        </p>   
                   </c:forEach>
                 </div></a>
                 <div class="divider"></div>
@@ -426,8 +473,8 @@
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Simple</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayPlus1']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
                         </p>  
@@ -437,22 +484,22 @@
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayPlus1']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
-                        </p>  
+                        </p>   
                   </c:forEach>
                 </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayPlus1']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
-                        </p>  
+                        </p>   
                   </c:forEach>
                 </div></a>
                 <div class="divider"></div>
@@ -492,19 +539,19 @@
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Simple</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsSimpleTodayPlus2']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
-                        </p>  
+                        </p>   
                         </c:forEach>
                     </div></a>
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Zen</h5>
                   <c:forEach var="u" items="${requestScope['listeDesClientsZenTodayPlus2']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
                         </p>  
@@ -513,12 +560,14 @@
                 <div class="divider"></div>
                 <a class="waves-effect waves-teal btn"><div class="section">
                   <h5>Swazi</h5>
-                  <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayPlus2']}">  
-                        <p>${u.prenom} ${u.nom} ${u.heureArrivee}
-                            <fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
+                   <c:set var="apayeSwazyTodayPlus2" value="${requestScope['apayeSwazyTodayPlus2']}"/>
+                  <c:forEach var="u" items="${requestScope['listeDesClientsSwaziTodayPlus2']}"> 
+                    
+                        <p>${u.prenom} ${u.nom} </br>${u.heureArrivee}
+                            </br><fmt:formatDate value="${u.jourArrivee}" pattern="dd-MM-yyyy"/>
                             </br><fmt:formatDate value="${u.jourDepart}" pattern="dd-MM-yyyy"/>
                             </br> ${u.prix}€</td>
-                        </p> 
+                        </p>  
                         </c:forEach>
                 </div></a>
                 <div class="divider"></div>
